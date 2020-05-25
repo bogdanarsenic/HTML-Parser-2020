@@ -13,7 +13,7 @@ namespace Client
 
         public bool CheckIfStringEmpty(string str)
         {
-            if (string.IsNullOrEmpty(str))
+            if (string.IsNullOrWhiteSpace(str))
             {
                 Console.WriteLine("String can not be empty!");
                 return true;
@@ -38,9 +38,20 @@ namespace Client
 
         public bool CheckIfNameEmpty(string name)
         {
-            if (string.IsNullOrEmpty(name))
+            if (string.IsNullOrWhiteSpace(name))
             {
-                Console.WriteLine("Name can not or empty!");
+                Console.WriteLine("Name can not be empty!");
+                return true;
+            }
+            else
+                return false;
+        }
+
+        public bool CheckIfContentEmpty(string content)
+        {
+            if (string.IsNullOrWhiteSpace(content))
+            {
+                Console.WriteLine("Content is empty!");
                 return true;
             }
             else
