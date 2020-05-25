@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,7 @@ namespace Client
 {
     public class Validation : IValidation
     {
+        
 
         public bool CheckIfStringEmpty(string str)
         {
@@ -18,6 +20,11 @@ namespace Client
             }
             else
                 return false;
+        }
+
+        public bool CheckIfPathCorrect(string path)
+        {
+            //File.Exists(path)
         }
     }
 }
