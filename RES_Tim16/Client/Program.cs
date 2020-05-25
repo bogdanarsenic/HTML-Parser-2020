@@ -11,6 +11,7 @@ namespace Client
         static void Main(string[] args)
         {
             string option = "";
+            string textcontent="";
 
             while (option == "")
             {
@@ -18,6 +19,7 @@ namespace Client
                 Console.WriteLine("Choose an option from menu: ");
                 Console.WriteLine("1. Insert file path");
                 Console.WriteLine("2. Write html directly");
+                Console.WriteLine("If you want to exit - click X");
 
                 option = Console.ReadLine();
 
@@ -28,16 +30,22 @@ namespace Client
                         option = Console.ReadLine();
                         IValidation validate = new Validation();
 
-                        if(!validate.CheckIfStringEmpty(option))
+                        if(!validate.CheckIfStringEmpty(option) && validate.CheckIfPathCorrect(option))
                         {
-                            
+                            //Proslediti parseru
                         }
                         
                         break;
                     case "2":
+
                         Console.WriteLine("Write the filename:");
                         option = Console.ReadLine();
                         Console.WriteLine("Write the file content:");
+
+                        
+                        break;
+                    case "X":
+
                         break;
                     default:
                         option = "";
@@ -46,8 +54,6 @@ namespace Client
                 }
             }
 
-            Console.WriteLine("Enter for exit");
-            Console.ReadLine();
         }
 
     }
