@@ -13,9 +13,9 @@ namespace Client
 
         public bool CheckIfStringEmpty(string str)
         {
-            if (string.IsNullOrEmpty(str))
+            if (string.IsNullOrWhiteSpace(str))
             {
-                Console.WriteLine("String is NULL or empty!");
+                Console.WriteLine("String can not be empty!");
                 return true;
             }
             else
@@ -34,6 +34,28 @@ namespace Client
                 Console.WriteLine("File does not exists!");
                 return false;
             }
+        }
+
+        public bool CheckIfNameEmpty(string name)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                Console.WriteLine("Name can not be empty!");
+                return true;
+            }
+            else
+                return false;
+        }
+
+        public bool CheckIfContentEmpty(string content)
+        {
+            if (string.IsNullOrWhiteSpace(content))
+            {
+                Console.WriteLine("Content is empty!");
+                return true;
+            }
+            else
+                return false;
         }
     }
 }
