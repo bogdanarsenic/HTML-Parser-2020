@@ -15,7 +15,6 @@ namespace Client
             while (option == "")
             {
 
-
                 Console.WriteLine("Choose an option from menu: ");
                 Console.WriteLine("1. Insert file path");
                 Console.WriteLine("2. Write html directly");
@@ -27,6 +26,13 @@ namespace Client
                     case "1":
                         Console.WriteLine("Insert file path:");
                         option = Console.ReadLine();
+                        IValidation validate = new Validation();
+
+                        if(!validate.CheckIfStringEmpty(option))
+                        {
+                            
+                        }
+                        
                         break;
                     case "2":
                         Console.WriteLine("Write the filename:");
