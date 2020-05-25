@@ -24,7 +24,16 @@ namespace Client
 
         public bool CheckIfPathCorrect(string path)
         {
-            //File.Exists(path)
+            if (File.Exists(path))
+            {
+                Console.WriteLine("File exists!");
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("File does not exists!");
+                return false;
+            }
         }
     }
 }
