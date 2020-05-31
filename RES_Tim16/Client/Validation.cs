@@ -15,7 +15,7 @@ namespace Client
         {
             if (string.IsNullOrWhiteSpace(str))
             {
-                Console.WriteLine("String can not be empty!");
+                Console.WriteLine("Input can not be empty!");
                 return true;
             }
             else
@@ -24,6 +24,8 @@ namespace Client
 
         public bool CheckIfPathCorrect(string path)
         {
+            path = @"C:\Users\Bogdan\Tim16\" + path;
+
             if (File.Exists(path))
             {
                 Console.WriteLine("File exists!");
@@ -34,28 +36,6 @@ namespace Client
                 Console.WriteLine("File does not exists!");
                 return false;
             }
-        }
-
-        public bool CheckIfNameEmpty(string name)
-        {
-            if (string.IsNullOrWhiteSpace(name))
-            {
-                Console.WriteLine("Name can not be empty!");
-                return true;
-            }
-            else
-                return false;
-        }
-
-        public bool CheckIfContentEmpty(string content)
-        {
-            if (string.IsNullOrWhiteSpace(content))
-            {
-                Console.WriteLine("Content is empty!");
-                return true;
-            }
-            else
-                return false;
         }
     }
 }

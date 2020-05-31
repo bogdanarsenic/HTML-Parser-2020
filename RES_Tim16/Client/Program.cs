@@ -12,8 +12,12 @@ namespace Client
         {
             string option = "";
             string textcontent="";
+            bool input = false;
 
-            while (option == "")
+            IValidation validate = new Validation();
+
+
+            while (!input)
             {
                 Console.WriteLine("-----MENU-----");
                 Console.WriteLine("Choose an option from menu: ");
@@ -25,52 +29,48 @@ namespace Client
 
                 switch (option)
                 {
-                    case "1":
+                    case "1": 
 
-                        IValidation validate = new Validation();
                         Console.WriteLine("Insert file path:");
                         option = Console.ReadLine();
                         
                         if(!validate.CheckIfStringEmpty(option) && validate.CheckIfPathCorrect(option))
                         {
                             //Proslediti parseru
+                            input = true;
                             Console.ReadLine();
                         }
 
-                        option = "";
                         break;
 
                     case "2":
 
-                        IValidation validateOpt2 = new Validation();
                         Console.WriteLine("Write the filename:");
                         option = Console.ReadLine();
-                        bool nameEmpty=validateOpt2.CheckIfNameEmpty(option);
+                        bool nameEmpty = validate.CheckIfStringEmpty(option);
 
-                        if(nameEmpty)
+                        if(nameEmpty || validate.CheckIfPathCorrect(option))
                         {
-                            option = "";
+                            Console.WriteLine("Choose another name!");
                             break;
                         }
 
                         Console.WriteLine("Write the file content:");
                         textcontent = Console.ReadLine();
-                        bool contentEmpty=validateOpt2.CheckIfContentEmpty(textcontent);
+                        bool contentEmpty=validate.CheckIfStringEmpty(textcontent);
 
                         if(contentEmpty)
                         {
-                            option = "";
                             break;
                         }
 
                         //Prosledjuje se parseru.
-                        option = "";
+                        input = true;
                         break;
                     case "X":
-                        option = "x";
+                        input = true;
                         break;
                     default:
-                        option = "";
                         Console.WriteLine("You need to put 1 or 2");
                         break;
                 }
