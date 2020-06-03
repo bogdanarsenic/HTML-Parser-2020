@@ -68,6 +68,7 @@
     <Compile Include="Access\Configuration.cs" />
     <Compile Include="Access\IDBManager.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="DBManager.cs" />
     <Compile Include="FileContext.cs" />
     <Compile Include="Models\Delta.cs" />
     <Compile Include="Models\Files.cs" />
