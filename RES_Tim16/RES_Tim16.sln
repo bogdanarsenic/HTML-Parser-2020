@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{2537FE37
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{785F9D9D-85E6-4E8D-A18D-3DD99531723D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualUI", "VirtualUI\VirtualUI.csproj", "{77AA1531-CAFA-4A87-8BFB-688E9C127653}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{785F9D9D-85E6-4E8D-A18D-3DD99531723D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{785F9D9D-85E6-4E8D-A18D-3DD99531723D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{785F9D9D-85E6-4E8D-A18D-3DD99531723D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77AA1531-CAFA-4A87-8BFB-688E9C127653}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77AA1531-CAFA-4A87-8BFB-688E9C127653}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77AA1531-CAFA-4A87-8BFB-688E9C127653}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77AA1531-CAFA-4A87-8BFB-688E9C127653}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

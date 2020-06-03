@@ -1,0 +1,20 @@
+﻿CREATE TABLE Files(
+Id NVARCHAR(50),
+Name NVARCHAR(50),
+Extension NVARCHAR(10),
+PRIMARY KEY (Id)
+);
+
+CREATE TABLE FileContent(
+Id NVARCHAR(50),
+FileId NVARCHAR(50),
+Content NVARCHAR(100),
+PRIMARY KEY (Id)
+);
+
+CREATE TABLE Delta(
+FileId NVARCHAR(50),
+LineRange NVARCHAR(50),
+Content NVARCHAR(100),
+PRIMARY KEY (FileId)
+);
