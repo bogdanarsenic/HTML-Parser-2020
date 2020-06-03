@@ -10,7 +10,7 @@ namespace VirtualUI
     public class FileContext : DbContext
     {
         public FileContext()
-            : base("FileContext")
+            : base("FileDatabase")
         {
         }
 

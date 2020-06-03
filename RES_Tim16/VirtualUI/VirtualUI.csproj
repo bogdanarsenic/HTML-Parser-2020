@@ -65,10 +65,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Access\Configuration.cs" />
+    <Compile Include="Access\IDBManager.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="FileContext.cs" />
     <Compile Include="Models\Delta.cs" />
-    <Compile Include="Models\File.cs" />
+    <Compile Include="Models\Files.cs" />
     <Compile Include="Models\FileContent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
