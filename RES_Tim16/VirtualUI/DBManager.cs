@@ -174,16 +174,26 @@ namespace VirtualUI
             FileContent fc = null;
             using (var dbContext = new FileContext())
             {
-
-                fc = dbContext.FileContents.FirstOrDefault(x => x.FileId == fileId);
-
-
-                if (fc != null)
+                try
                 {
-                    return fc.Id;
-                }
 
-                return "Error While getting FileContent id";
+
+                    fc = dbContext.FileContents.FirstOrDefault(x => x.FileId == fileId);
+
+
+                    if (fc != null)
+                    {
+                        return fc.Id;
+                    }
+
+                    return "No FileContent with this fileID";
+                }
+                catch
+                {
+
+                     throw new ArgumentException("Something wrong with the function GetContent for Database");
+
+                }
             }
         }
 
@@ -207,7 +217,8 @@ namespace VirtualUI
                 }
                 catch
                 {
-                    return "Error!";
+                    throw new ArgumentException("Something wrong with the function GetContent for Database");
+
                 }
             }
         }

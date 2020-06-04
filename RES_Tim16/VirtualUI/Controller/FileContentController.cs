@@ -29,8 +29,8 @@ namespace VirtualUI.Controller
                 }
             }
             catch
-            { 
-                return false;
+            {
+                throw new ArgumentException("Something wrong with the function AddFileContent for Database");
             }
         }
 
@@ -52,8 +52,7 @@ namespace VirtualUI.Controller
             }
             catch
             {
-                Console.WriteLine(DateTime.Now + ": FileContent wasn't Updated to Database.");
-                return false;
+                throw new ArgumentException("Something wrong with the function UpdateFileContent for Database");
             }
         }
 

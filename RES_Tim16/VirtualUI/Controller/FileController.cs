@@ -22,7 +22,7 @@ namespace VirtualUI.Controller
             }
             catch
             {
-                return false;
+                throw new ArgumentException("Something wrong with the function FileExists for Database");
             }
 
         }
@@ -38,14 +38,14 @@ namespace VirtualUI.Controller
                 }
                 else
                 {
-                    Console.WriteLine("Somethingg is wrong");
+                    Console.WriteLine("Somethingg is wrong the AddFile function for Database");
                     return false;
                 }
 
             }
             catch 
             {
-                return false;
+                throw new ArgumentException("Something wrong with the AddFile function for Database");
             }
         }
     }

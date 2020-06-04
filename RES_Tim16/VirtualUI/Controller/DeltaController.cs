@@ -30,8 +30,7 @@ namespace VirtualUI.Controller
             }
             catch
             {
-                Console.WriteLine(DateTime.Now + ": Delta wasn't added to Database.");
-                return false;
+                throw new ArgumentException("Something wrong with the AddDelta function for Database");
             }
         }
 
@@ -53,8 +52,7 @@ namespace VirtualUI.Controller
             }
             catch
             {
-                Console.WriteLine(DateTime.Now + ": Delta wasn't Updated to Database.");
-                return false;
+                throw new ArgumentException("Something wrong with the UpdateDelta function for Database");
             }
         }
 
@@ -65,11 +63,17 @@ namespace VirtualUI.Controller
                 if (dBManager.DeltaExists(id))
                     return true;
                 else
+                {
+
+                    Console.WriteLine(DateTime.Now + ": Delta doesn't exists in Database.");
                     return false;
+
+                }
             }
             catch
             {
-                return false;
+                throw new ArgumentException("Something wrong with the DeltaExists function for Database");
+
             }
 
         }
