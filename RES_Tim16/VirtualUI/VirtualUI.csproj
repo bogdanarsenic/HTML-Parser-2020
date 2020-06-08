@@ -70,6 +70,7 @@
   <ItemGroup>
     <Compile Include="Access\Configuration.cs" />
     <Compile Include="Access\IDBManager.cs" />
+    <Compile Include="UpdatingDatabase.cs" />
     <Compile Include="VirtualUI.cs" />
     <Compile Include="Controller\DeltaController.cs" />
     <Compile Include="Controller\FileContentController.cs" />

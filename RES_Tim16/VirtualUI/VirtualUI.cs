@@ -34,6 +34,8 @@ namespace VirtualUI
             fileContent.FileId = file.Id;
             fileContent.Content = content;
 
+            UpdatingDatabase update = new UpdatingDatabase(file, fileContent);
+
         }
 
     }
