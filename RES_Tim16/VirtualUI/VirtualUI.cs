@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UIControllerMiddleware;
 using VirtualUI.Models;
 
 namespace VirtualUI
@@ -13,15 +14,23 @@ namespace VirtualUI
         private string Name { get; set; }
         private string Content { get; set; }
 
-        public VirtualUI()
+        public VirtualUI(IController controller)
         {
-  
+            string text = controller.GetFileInformation();
 
-            ParseInformationFromController(Name, Content);
+            if (text == null || !text.Contains("|") || text.Split('|').Length != 2)
+            {
+                throw new ArgumentException("Something wrong with the File Information from Controller");
+            }
+
+            Name = text.Split('|')[0];
+            Content = text.Split('|')[1];
+
+            ParseInformationFromController(Name, Content, controller);
 
         }
 
-        public void ParseInformationFromController(string name, string content)
+        public void ParseInformationFromController(string name, string content,IController ic)
         {
            
 
@@ -34,7 +43,7 @@ namespace VirtualUI
             fileContent.FileId = file.Id;
             fileContent.Content = content;
 
-            UpdatingDatabase update = new UpdatingDatabase(file, fileContent);
+            UpdatingDatabase update = new UpdatingDatabase(file, fileContent,ic);
 
         }
 

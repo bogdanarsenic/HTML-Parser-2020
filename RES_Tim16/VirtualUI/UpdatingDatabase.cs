@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UIControllerMiddleware;
 using VirtualUI.Controller;
 using VirtualUI.Models;
 
@@ -19,18 +20,37 @@ namespace VirtualUI
 
         }
 
-        public UpdatingDatabase(Files file, FileContent fileContent)
+        public UpdatingDatabase(Files file, FileContent fileContent, IController ic)
         {
-
+            Delta delta = new Delta();
             fileController = new FileController();
             fileContentController = new FileContentController();
- 
+
+            deltaController = new DeltaController();
+
+            delta = null;
 
             if (fileController.FileExists(file.Id))
             {
                 Console.WriteLine("FILE EXISTS IN DATABASE!!");
                 Console.WriteLine("We will now start processing for the changes...");
-              
+
+                string databaseContent = fileContentController.GetContent(file.Id);
+
+                if (databaseContent != fileContent.Content)
+                {
+                   // CompareFiles cf = new CompareFiles(fileContent.Content, databaseContent, file.Id);
+                  //  delta = cf.Compare(fileContent.Content, databaseContent, file.Id);
+                }
+
+                if (delta != null)
+                {
+                    UpdateFileContent(fileContentController, fileContent, file.Id);
+                }
+                else
+                {
+                    Console.WriteLine("No changes! File contents are completely the same");
+                }
             }
             else
             {
@@ -40,6 +60,12 @@ namespace VirtualUI
 
         }
 
+        public void UpdateFileContent(IFileContentController fcc, FileContent fc, string fileId)
+        {
+            string fileContentId = fcc.GetFileContentId(fileId);
+            fc.Id = fileContentId;
+            fcc.UpdateFileContent(fc);
+        }
 
         public void AddToDatabase(Files file, FileContent fileContent, IFileController fc, IFileContentController fcc)
         {
