@@ -15,6 +15,22 @@ namespace VirtualUI
         public string DatabaseContent { get; set; }
         public string FileId { get; set; }
 
+        public CompareFiles()
+        {
+
+        }
+        public CompareFiles(string content, string databaseContent, string fileId)
+        {
+            if (content == null || databaseContent == null || fileId == null)
+            {
+                throw new ArgumentException("Properties can't be null!");
+            }
+
+            Content = content;
+            DatabaseContent = databaseContent;
+            FileId = fileId;
+        }
+
         public Delta Compare(string content, string databaseContent, string fileId)
         {
 
@@ -61,6 +77,20 @@ namespace VirtualUI
 
             }
 
+
+            if (change)
+            {
+                d.FileId = fileId;
+                if (dc.DeltaExists(d.FileId))
+                {
+                    dc.UpdateDelta(d);
+                }
+                else
+                    dc.Add(d);
+
+            }
+            else
+                d = null;
 
             return d;
         }
