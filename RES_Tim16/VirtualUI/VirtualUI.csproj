@@ -71,6 +71,7 @@
     <Compile Include="Access\Configuration.cs" />
     <Compile Include="Access\IDBManager.cs" />
     <Compile Include="CompareFiles.cs" />
+    <Compile Include="SendDeltaInformation.cs" />
     <Compile Include="UpdatingDatabase.cs" />
     <Compile Include="VirtualUI.cs" />
     <Compile Include="Controller\DeltaController.cs" />
