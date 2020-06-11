@@ -50,7 +50,47 @@ namespace Parser
 
         public bool CheckHtmlTagsAfterBodyUntilEnd(string text)
         {
-            throw new NotImplementedException();
+            string htmlStartTagsUntilTitle = "<html><head><title>";
+            string htmlTagsAfterTitleUntilBody = "</title></head><body>";
+            string htmlTagsAfterBodyUntilEnd = "</body></html>";
+
+            string trim = Regex.Replace(text, @"\s+", "");              // deleting all whitespaces
+            //Console.WriteLine("deleting all whitespaces -> " + trim);
+
+            if (htmlStartTagsUntilTitle.Length > trim.Length)
+            {
+                return false;
+            }
+            trim = trim.Remove(0, htmlStartTagsUntilTitle.Length);      // deleting tags until title
+                                                                        //Console.WriteLine("deleting tags until title -> " + trim);
+            if (!trim.Contains('<'))
+            {
+                return false;
+            }
+            trim = trim.Substring(trim.IndexOf('<'));                   // deleting title
+            //Console.WriteLine("deleting title -> " + trim);
+
+            if (htmlTagsAfterTitleUntilBody.Length > trim.Length)
+            {
+                return false;
+            }
+            trim = trim.Remove(0, htmlTagsAfterTitleUntilBody.Length);  // deleting tags after title and until the body
+            //Console.WriteLine("deleting tags after title and until the body -> " + trim);
+
+            if (!trim.Contains("</body>"))
+            {
+                return false;
+            }
+            trim = trim.Substring(trim.IndexOf("</body>"));                   // deleting text inside body tags
+                                                                              //Console.WriteLine("deleting text inside body tags -> " + trim);
+                                                                              // string trim should now be == </body></html>  if html file is in correct format
+
+            if (trim.Equals(htmlTagsAfterBodyUntilEnd))
+            {
+                return true;
+            }
+
+            return false;
         }
 
         public bool CheckHtmlTagsAfterTitleUntilBody(string text)
