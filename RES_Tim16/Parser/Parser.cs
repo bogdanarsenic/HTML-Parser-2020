@@ -10,7 +10,22 @@ namespace Parser
     {
         public void AllowedTagsList(List<string> htmlTags)
         {
-            throw new NotImplementedException();
+           
+                int i = 1;
+                Console.WriteLine("Allowed html tags: ");
+                foreach (string s in htmlTags)
+                {
+                    if (i % 2 == 0)
+                    {
+                        Console.WriteLine(s + ' ');
+                    }
+                    else
+                    {
+                        Console.Write(s + ' ');
+                    }
+                    i++;
+                }
+            
         }
 
         public bool Check(string content)
