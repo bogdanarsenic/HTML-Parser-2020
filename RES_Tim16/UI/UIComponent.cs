@@ -38,14 +38,31 @@ namespace UI
                 this.LineRange = content.Split('|')[1];
                 this.DatabaseContent = content.Split('|')[2];
                 this.TextContent = controller.Content;
-                
+
                 // get line range
+                int[] linenumbers = GetLineRange(this.LineRange);
 
                 // add colour
 
             }
         }
 
+        public int[] GetLineRange(string lines)
+        {
+            int i = lines.Split(',').Length - 1;
 
+            int[] linenumbers = new int[i];
+
+            int LineNumber = 0;
+
+
+            for (int y = 0; y < i; y++)
+            {
+                LineNumber = Convert.ToInt32(lines.Split(',')[y]);
+                linenumbers[y] = LineNumber;
+            }
+
+            return linenumbers;
+        }
     }
 }
