@@ -31,7 +31,28 @@ namespace Parser
 
         public bool CheckAllTags(string content)
         {
-            throw new NotImplementedException();
+            List<string> htmlTags = new List<string>() { "<html>", "</html>", "<head>", "</head>",
+                "<title>", "</title>", "<body>", "</body>", "<b>", "</b>", "<p>", "</p>",
+                "<a>", "</a>", "<ul>", "</ul>", "<li>", "</li>", "<br>"};
+
+            AllowedTagsList(htmlTags);
+            Console.WriteLine("\n*********************************************");
+
+            string htmlText = content;
+
+            bool correctTagsWithoutBody = CheckHtmlTagsNotInsideBody(htmlText);
+            bool testBodyTagCheck = CheckHtmlTagsInsideBody(htmlText);
+
+            if (testBodyTagCheck && correctTagsWithoutBody)
+            {
+                Console.WriteLine("\n\nAll tags in file are VALID!\n\n");
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("\n\nTags are INVALID!\n\n");
+                return false;
+            }
         }
 
         public bool CheckHtmlStartTagsUntilTitle(string text)
