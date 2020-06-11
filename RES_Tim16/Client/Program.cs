@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UIController;
+using UIControllerMiddleware;
+using VirtualUI;
 
 namespace Client
 {
@@ -63,6 +66,10 @@ namespace Client
                         {
                             break;
                         }
+
+                        IController uIController = new Controller(option, textcontent);
+
+                        VirtualUI.VirtualUI virtualUI5 = new VirtualUI.VirtualUI(uIController);
 
                         //Prosledjuje se parseru.
                         input = true;

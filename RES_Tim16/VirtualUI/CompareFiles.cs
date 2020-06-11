@@ -73,6 +73,7 @@ namespace VirtualUI
                     d.Content += deltaContent + "\n";
                     change = true;
                     deltaContent = "";
+                    previousContent = "";
                 }
 
             }

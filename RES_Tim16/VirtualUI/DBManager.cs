@@ -163,6 +163,8 @@ namespace VirtualUI
                 else
                 {
                     oldFileContent.Content = fc.Content;
+                    oldFileContent.FileId = fc.FileId;
+                    oldFileContent.Id = fc.Id;
                     dbContext.SaveChanges();
                     return true;
                 }
