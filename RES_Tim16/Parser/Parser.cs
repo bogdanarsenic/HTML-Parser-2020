@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Parser
@@ -35,7 +36,16 @@ namespace Parser
 
         public bool CheckHtmlStartTagsUntilTitle(string text)
         {
-            throw new NotImplementedException();
+            string htmlStartTagsUntilTitle = "<html><head><title>";
+
+            string trim = Regex.Replace(text, @"\s+", "");
+
+            if (trim.StartsWith(htmlStartTagsUntilTitle))
+            {
+                return true;
+            }
+
+            return false;
         }
 
         public bool CheckHtmlTagsAfterBodyUntilEnd(string text)
