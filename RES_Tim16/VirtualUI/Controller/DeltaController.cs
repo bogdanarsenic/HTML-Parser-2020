@@ -12,7 +12,7 @@ namespace VirtualUI.Controller
         DBManager dBManager = DBManager.Instance;
 
 
-        public bool Add(Delta delta)
+        public bool Add(Delta delta) //fejkovanje add delta metode
         {
             try
             {
