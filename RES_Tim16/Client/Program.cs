@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Parser;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -35,11 +36,21 @@ namespace Client
                     case "1": 
 
                         Console.WriteLine("Insert file path:");
-                        option = Console.ReadLine();
+                        string path = Console.ReadLine();
                         
-                        if(!validate.CheckIfStringEmpty(option) && validate.CheckIfPathCorrect(option))
+                        if(!validate.CheckIfStringEmpty(path) && validate.CheckIfPathCorrect(path))
                         {
-                            //Proslediti parseru
+                            //Forward to parser
+                            FileParser fp = new FileParser();
+                            string checkIfValidFileContent = "";
+                            checkIfValidFileContent = fp.OpenExistingFileForParsing(path);
+
+                            if (!checkIfValidFileContent.Equals("INVALID!"))
+                            {
+                                IController uIController1 = new Controller(path, checkIfValidFileContent);
+                                VirtualUI.VirtualUI virtualUI = new VirtualUI.VirtualUI(uIController1);
+                            }
+
                             input = true;
                             Console.ReadLine();
                         }
