@@ -67,6 +67,18 @@
       <Project>{f29afebd-1578-47a9-88e7-49e47bec1e89}</Project>
       <Name>Parser</Name>
     </ProjectReference>
+    <ProjectReference Include="..\UIControllerMiddleware\UIControllerMiddleware.csproj">
+      <Project>{6F9C2DBA-B893-4BE1-980B-C9FB1C896CCD}</Project>
+      <Name>UIControllerMiddleware</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UIController\UIController.csproj">
+      <Project>{7D4A608E-CC32-4C00-8057-25AF56E7A198}</Project>
+      <Name>UIController</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VirtualUI\VirtualUI.csproj">
+      <Project>{77AA1531-CAFA-4A87-8BFB-688E9C127653}</Project>
+      <Name>VirtualUI</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

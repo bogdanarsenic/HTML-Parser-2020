@@ -70,6 +70,8 @@
   <ItemGroup>
     <Compile Include="Access\Configuration.cs" />
     <Compile Include="Access\IDBManager.cs" />
+    <Compile Include="CompareFiles.cs" />
+    <Compile Include="SendDeltaInformation.cs" />
     <Compile Include="UpdatingDatabase.cs" />
     <Compile Include="VirtualUI.cs" />
     <Compile Include="Controller\DeltaController.cs" />
@@ -110,6 +112,12 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UIControllerMiddleware\UIControllerMiddleware.csproj">
+      <Project>{6F9C2DBA-B893-4BE1-980B-C9FB1C896CCD}</Project>
+      <Name>UIControllerMiddleware</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
