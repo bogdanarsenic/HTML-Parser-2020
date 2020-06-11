@@ -11,14 +11,14 @@ namespace Parser
     {
         public void CreateNewFileForParsing(string name, string content)
         {
-            string pathforParser = @"C:\Users\Dejan\Desktop\IGRANJE\" + name;
+            string pathforParser = @"C:\Users\Bogdan\Tim16\" + name;
             File.WriteAllText(pathforParser, content);
         }
 
         public string OpenExistingFileForParsing(string path)
         {
             bool checkIfOk = false;
-            string pathforParser = @"C:\Users\Dejan\Desktop\IGRANJE\" + path;
+            string pathforParser = @"C:\Users\Bogdan\Tim16\" + path;
             string textForParsing = File.ReadAllText(pathforParser);
 
             Console.WriteLine(textForParsing);

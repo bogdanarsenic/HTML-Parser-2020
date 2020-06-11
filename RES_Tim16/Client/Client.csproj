@@ -75,6 +75,10 @@
       <Project>{7D4A608E-CC32-4C00-8057-25AF56E7A198}</Project>
       <Name>UIController</Name>
     </ProjectReference>
+    <ProjectReference Include="..\UI\UI.csproj">
+      <Project>{5EB22B46-D42C-4D6D-B56A-AFFAA89E1B65}</Project>
+      <Name>UI</Name>
+    </ProjectReference>
     <ProjectReference Include="..\VirtualUI\VirtualUI.csproj">
       <Project>{77AA1531-CAFA-4A87-8BFB-688E9C127653}</Project>
       <Name>VirtualUI</Name>

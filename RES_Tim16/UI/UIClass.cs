@@ -7,7 +7,7 @@ using UIControllerMiddleware;
 
 namespace UI
 {
-    public class UIComponent
+    public class UIClass
     {
         private string DeltaContent { get; set; }
         private string TextContent { get; set; }
@@ -15,7 +15,7 @@ namespace UI
         private string DatabaseContent { get; set; }
 
 
-        public UIComponent(IController controller)
+        public UIClass(IController controller)
         {
             string content = controller.ReceiveDeltaInformation();
 

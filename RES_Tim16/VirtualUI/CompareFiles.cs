@@ -34,8 +34,8 @@ namespace VirtualUI
         public Delta Compare(string content, string databaseContent, string fileId)
         {
 
-            string[] newText = content.Split(new string[] { "\\n" }, StringSplitOptions.None);
-            string[] previous = databaseContent.Split(new string[] { "\\n" }, StringSplitOptions.None);
+            string[] newText = content.Split(new string[] { "\r\n" }, StringSplitOptions.None);
+            string[] previous = databaseContent.Split(new string[] { "\r\n" }, StringSplitOptions.None);
 
             int lengthOfNewText = newText.Length;
             int lengthOfPreviousText = previous.Length;

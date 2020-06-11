@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UI;
 using UIController;
 using UIControllerMiddleware;
 using VirtualUI;
@@ -49,6 +50,7 @@ namespace Client
                             {
                                 IController uIController1 = new Controller(path, checkIfValidFileContent1);
                                 VirtualUI.VirtualUI virtualUI1 = new VirtualUI.VirtualUI(uIController1);
+                                UIClass ui = new UIClass(uIController1);
                             }
 
                             input = false;
@@ -89,6 +91,8 @@ namespace Client
                         {
                             IController uIController2 = new Controller(fileName, checkIfValidFileContent2);
                             VirtualUI.VirtualUI virtualUI2 = new VirtualUI.VirtualUI(uIController2);
+                            UIClass ui = new UIClass(uIController2);
+
                         }
 
                         input = false;
