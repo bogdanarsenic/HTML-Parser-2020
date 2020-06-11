@@ -55,7 +55,29 @@ namespace Parser
 
         public bool CheckHtmlTagsAfterTitleUntilBody(string text)
         {
-            throw new NotImplementedException();
+            string htmlStartTagsUntilTitle = "<html><head><title>";
+            string htmlTagsAfterTitleUntilBody = "</title></head><body>";
+
+            string trim = Regex.Replace(text, @"\s+", "");
+
+            if (htmlStartTagsUntilTitle.Length > trim.Length)
+            {
+                return false;
+            }
+            trim = trim.Remove(0, htmlStartTagsUntilTitle.Length);
+
+            if (!trim.Contains('<'))
+            {
+                return false;
+            }
+            trim = trim.Substring(trim.IndexOf('<'));
+
+            if (trim.StartsWith(htmlTagsAfterTitleUntilBody))
+            {
+                return true;
+            }
+
+            return false;
         }
 
         public bool CheckHtmlTagsInsideBody(string text)
