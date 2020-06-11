@@ -43,7 +43,7 @@ namespace UI
                 int[] linenumbers = GetLineRange(this.LineRange);
 
                 // add colour
-
+                AddColor ac = new AddColor(this.DeltaContent, linenumbers, this.DatabaseContent, this.TextContent);
             }
         }
 
