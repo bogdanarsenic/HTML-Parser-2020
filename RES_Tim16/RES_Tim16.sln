@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UIControllerMiddleware", "U
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UIController", "UIController\UIController.csproj", "{7D4A608E-CC32-4C00-8057-25AF56E7A198}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI", "UI\UI.csproj", "{5EB22B46-D42C-4D6D-B56A-AFFAA89E1B65}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{7D4A608E-CC32-4C00-8057-25AF56E7A198}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D4A608E-CC32-4C00-8057-25AF56E7A198}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D4A608E-CC32-4C00-8057-25AF56E7A198}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EB22B46-D42C-4D6D-B56A-AFFAA89E1B65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EB22B46-D42C-4D6D-B56A-AFFAA89E1B65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EB22B46-D42C-4D6D-B56A-AFFAA89E1B65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EB22B46-D42C-4D6D-B56A-AFFAA89E1B65}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
