@@ -41,17 +41,17 @@ namespace Client
                         if(!validate.CheckIfStringEmpty(path) && validate.CheckIfPathCorrect(path))
                         {
                             //Forward to parser
-                            FileParser fp = new FileParser();
-                            string checkIfValidFileContent = "";
-                            checkIfValidFileContent = fp.OpenExistingFileForParsing(path);
+                            FileParser fp1 = new FileParser();
+                            string checkIfValidFileContent1 = "";
+                            checkIfValidFileContent1 = fp1.OpenExistingFileForParsing(path);
 
-                            if (!checkIfValidFileContent.Equals("INVALID!"))
+                            if (!checkIfValidFileContent1.Equals("INVALID!"))
                             {
-                                IController uIController1 = new Controller(path, checkIfValidFileContent);
-                                VirtualUI.VirtualUI virtualUI = new VirtualUI.VirtualUI(uIController1);
+                                IController uIController1 = new Controller(path, checkIfValidFileContent1);
+                                VirtualUI.VirtualUI virtualUI1 = new VirtualUI.VirtualUI(uIController1);
                             }
 
-                            input = true;
+                            input = false;
                             Console.ReadLine();
                         }
 
@@ -60,10 +60,10 @@ namespace Client
                     case "2":
 
                         Console.WriteLine("Write the filename:");
-                        option = Console.ReadLine();
-                        bool nameEmpty = validate.CheckIfStringEmpty(option);
+                        string fileName = Console.ReadLine();
+                        bool nameEmpty = validate.CheckIfStringEmpty(fileName);
 
-                        if(nameEmpty || validate.CheckIfPathCorrect(option))
+                        if(nameEmpty || validate.CheckIfPathCorrect(fileName))
                         {
                             Console.WriteLine("Choose another name!");
                             break;
@@ -78,12 +78,20 @@ namespace Client
                             break;
                         }
 
-                        IController uIController = new Controller(option, textcontent);
+                        //Forward to parser
+                        FileParser fp2 = new FileParser();
+                        fp2.CreateNewFileForParsing(fileName, textcontent);
 
-                        VirtualUI.VirtualUI virtualUI5 = new VirtualUI.VirtualUI(uIController);
+                        string checkIfValidFileContent2 = "";
+                        checkIfValidFileContent2 = fp2.OpenExistingFileForParsing(fileName);
 
-                        //Prosledjuje se parseru.
-                        input = true;
+                        if (!checkIfValidFileContent2.Equals("INVALID!"))
+                        {
+                            IController uIController2 = new Controller(fileName, checkIfValidFileContent2);
+                            VirtualUI.VirtualUI virtualUI2 = new VirtualUI.VirtualUI(uIController2);
+                        }
+
+                        input = false;
                         break;
                     case "X":
                         input = true;

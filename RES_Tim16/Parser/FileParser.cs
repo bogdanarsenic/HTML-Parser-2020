@@ -9,6 +9,12 @@ namespace Parser
 {
     public class FileParser : IFileParser
     {
+        public void CreateNewFileForParsing(string name, string content)
+        {
+            string pathforParser = @"C:\Users\Dejan\Desktop\IGRANJE\" + name;
+            File.WriteAllText(pathforParser, content);
+        }
+
         public string OpenExistingFileForParsing(string path)
         {
             bool checkIfOk = false;
@@ -29,5 +35,7 @@ namespace Parser
                 return "INVALID!";
             }
         }
+
+
     }
 }
