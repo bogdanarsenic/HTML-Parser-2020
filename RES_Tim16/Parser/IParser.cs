@@ -8,7 +8,7 @@ namespace Parser
 {
     public interface IParser
     {
-        bool Check(string content);
+        bool CheckAllTags(string content);
         void AllowedTagsList(List<string> htmlTags);
         bool CheckHtmlStartTagsUntilTitle(string text);
         bool CheckHtmlTagsAfterTitleUntilBody(string text);
