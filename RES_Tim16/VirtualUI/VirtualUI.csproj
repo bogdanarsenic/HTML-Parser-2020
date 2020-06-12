@@ -114,9 +114,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\UIControllerMiddleware\UIControllerMiddleware.csproj">
-      <Project>{6F9C2DBA-B893-4BE1-980B-C9FB1C896CCD}</Project>
-      <Name>UIControllerMiddleware</Name>
+    <ProjectReference Include="..\UIController\UIController.csproj">
+      <Project>{7D4A608E-CC32-4C00-8057-25AF56E7A198}</Project>
+      <Name>UIController</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

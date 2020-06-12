@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UIControllerMiddleware;
+using UIController;
 using VirtualUI.Controller;
 using VirtualUI.Models;
 
@@ -51,6 +51,9 @@ namespace VirtualUI
                 }
                 else
                 {
+                    Delta badDelta = new Delta();
+                    badDelta.LineRange = "";
+                    SendDeltaInformation sd = new SendDeltaInformation(badDelta, databaseContent, ic);
                     Console.WriteLine("No changes! File contents are completely the same");
                 }
             }

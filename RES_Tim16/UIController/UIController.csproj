@@ -42,13 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller.cs" />
+    <Compile Include="IController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\UIControllerMiddleware\UIControllerMiddleware.csproj">
-      <Project>{6f9c2dba-b893-4be1-980b-c9fb1c896ccd}</Project>
-      <Name>UIControllerMiddleware</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
