@@ -10,10 +10,6 @@ namespace VirtualUI
 {
     public class SendDeltaInformation
     {
-        public SendDeltaInformation()
-        {
-
-        }
 
         public SendDeltaInformation(Delta d, string previousContent, IController ic)
         {

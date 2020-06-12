@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Parser;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,11 +15,6 @@ namespace UIController
         public string LineRange { get; set; }
         public string DatabaseContent { get; set; }
 
-        public Controller()
-        {
-
-        }
-
         public Controller(string name, string content)
         {
             if (name == null || content == null)
@@ -29,17 +25,6 @@ namespace UIController
             Name = name;
             Content = content;
 
-            GetFileInformation();
-        }
-
-        public string GetFileInformation()
-        {
-           return Name + '|' + Content;
-        }
-
-        public string ReceiveDeltaInformation()
-        {
-            return DeltaContent + '|' + LineRange + '|' + DatabaseContent;
         }
 
         public void SendDeltaInformation(string textcontent, string lineRange, string databaseContent)
@@ -47,7 +32,6 @@ namespace UIController
             DeltaContent = textcontent;
             LineRange = lineRange;
             DatabaseContent = databaseContent;
-            ReceiveDeltaInformation();
         }
     }
 }

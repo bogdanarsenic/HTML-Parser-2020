@@ -15,10 +15,7 @@ namespace VirtualUI
         public string DatabaseContent { get; set; }
         public string FileId { get; set; }
 
-        public CompareFiles()
-        {
 
-        }
         public CompareFiles(string content, string databaseContent, string fileId)
         {
             if (content == null || databaseContent == null || fileId == null)

@@ -15,11 +15,6 @@ namespace VirtualUI
         public IFileContentController fileContentController;
         public IDeltaController deltaController;
 
-        public UpdatingDatabase()
-        {
-
-        }
-
         public UpdatingDatabase(Files file, FileContent fileContent, IController ic)
         {
             Delta delta = new Delta();
