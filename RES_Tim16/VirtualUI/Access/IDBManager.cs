@@ -18,6 +18,7 @@ namespace VirtualUI.Access
         bool AddFileContent(FileContent fcontent);
         bool UpdateFileContent(FileContent fcontent);
         string GetContent(string id);
+        string GetFileContentId(string fileId);
         #endregion
 
         #region Delta
