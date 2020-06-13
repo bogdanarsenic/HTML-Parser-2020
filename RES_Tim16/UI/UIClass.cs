@@ -9,11 +9,8 @@ namespace UI
 {
     public class UIClass
     {
-        private string DeltaContent { get; set; }
-        private string TextContent { get; set; }
-        private string LineRange { get; set; }
-        private string DatabaseContent { get; set; }
 
+        public IController controller;
 
         public UIClass(IController controller)
         {
@@ -25,17 +22,11 @@ namespace UI
             }
             else
             {
-
-                this.DeltaContent = controller.DeltaContent;
-                this.LineRange = controller.LineRange;
-                this.DatabaseContent = controller.DatabaseContent;
-                this.TextContent = controller.Content;
-
-                // get line range
-                int[] linenumbers = GetLineRange(this.LineRange);
+                this.controller = controller;
+                int[] linenumbers = GetLineRange(this.controller.LineRange);
 
                 // add colour
-                AddColor ac = new AddColor(this.DeltaContent, linenumbers, this.DatabaseContent, this.TextContent);
+                AddColor ac = new AddColor(linenumbers, this.controller);
             }
         }
 

@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UIController;
 
 namespace UI
 {
     public class AddColor
     {
-        public AddColor(string deltaText, int[] lines, string previousContent, string newContent)
+        public AddColor(int[] lines, IController controller)
         {
 
-            string[] delta = deltaText.Split(new string[] { "\n" }, StringSplitOptions.None);
-            string[] previous = previousContent.Split(new string[] { "\r\n" }, StringSplitOptions.None);
-            string[] newContents = newContent.Split(new string[] { "\r\n" }, StringSplitOptions.None);
+            string[] delta = controller.DeltaContent.Split(new string[] { "\n" }, StringSplitOptions.None);
+            string[] previous = controller.DatabaseContent.Split(new string[] { "\r\n" }, StringSplitOptions.None);
+            string[] newContents = controller.Content.Split(new string[] { "\r\n" }, StringSplitOptions.None);
 
             Array.Resize(ref delta, delta.Length - 1);
 
