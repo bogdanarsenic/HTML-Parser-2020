@@ -1,7 +1,7 @@
 <html>
 <head>
 <title>
-Ispravan
+Ispooo
 </title>
 </head>
 <body>
@@ -11,10 +11,5 @@ Dodajemo nesto
 <p>
 Dodajemo jos nesto
 </p>
-<ul>
-<li>
-AJmooo
-</li>
-</ul>
 </body>
 </html>

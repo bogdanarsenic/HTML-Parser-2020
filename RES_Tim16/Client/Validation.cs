@@ -24,7 +24,7 @@ namespace Client
 
         public bool CheckIfPathCorrect(string path)
         {
-            path = @"C:\Users\Bogdan\Tim16\" + path;
+            path = @"C:\Users\Dejan\Desktop\Tim16\" + path;
 
             if (File.Exists(path))
             {

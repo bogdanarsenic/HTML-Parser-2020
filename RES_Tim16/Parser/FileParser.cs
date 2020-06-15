@@ -9,30 +9,40 @@ namespace Parser
 {
     public class FileParser : IFileParser
     {
+        public string Name { get; set; }
+        public string Content { get; set; }
+
         public void CreateNewFileForParsing(string name, string content)
         {
-            string pathforParser = @"C:\Users\Bogdan\Tim16\" + name;
-            File.WriteAllText(pathforParser, content);
+            List<string> list = new List<string>();
+            IParser p = new Parser();
+            list = p.SplitHtmlText(content);
+
+            string pathforParser = @"C:\Users\Dejan\Desktop\Tim16\" + name;
+
+            File.AppendAllLines(pathforParser, list);
         }
 
-        public string OpenExistingFileForParsing(string path)
+        public void OpenExistingFileForParsing(string name)
         {
             bool checkIfOk = false;
-            string pathforParser = @"C:\Users\Bogdan\Tim16\" + path;
+            string pathforParser = @"C:\Users\Dejan\Desktop\Tim16\" + name;
             string textForParsing = File.ReadAllText(pathforParser);
 
             Console.WriteLine(textForParsing);
 
-            Parser p1 = new Parser();
+            IParser p1 = new Parser();
             checkIfOk = p1.CheckAllTags(textForParsing);
 
             if (checkIfOk)
             {
-                return textForParsing;
+                Content = textForParsing;
+                Name = name;
             }
             else
             {
-                return "INVALID!";
+                Content = "INVALID!";
+                Name = name;
             }
         }
 
