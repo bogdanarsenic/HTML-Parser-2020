@@ -294,6 +294,7 @@ namespace Parser
 
             for (int i = 0; i < list1.Count; i++)
             {
+                list1[i] = list1[i].Trim();
                 if (list1[i].Equals("html") || list1[i].Equals("/html") || list1[i].Equals("head") || list1[i].Equals("/head") || list1[i].Equals("body")
                     || list1[i].Equals("/body") || list1[i].Equals("p") || list1[i].Equals("/p") || list1[i].Equals("ul") || list1[i].Equals("/ul")
                     || list1[i].Equals("li") || list1[i].Equals("/li") || list1[i].Equals("b") || list1[i].Equals("/b") || list1[i].Equals("a") || list1[i].Equals("/a")

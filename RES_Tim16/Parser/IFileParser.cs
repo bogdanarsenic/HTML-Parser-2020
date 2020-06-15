@@ -8,7 +8,10 @@ namespace Parser
 {
     public interface IFileParser
     {
-        string OpenExistingFileForParsing(string path);
+        string Name { get; set; }
+        string Content { get; set; }
+
+        void OpenExistingFileForParsing(string name);
         void CreateNewFileForParsing(string name, string content);
     }
 }

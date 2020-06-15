@@ -15,15 +15,15 @@ namespace UIController
         public string LineRange { get; set; }
         public string DatabaseContent { get; set; }
 
-        public Controller(string name, string content)
+        public Controller(IFileParser fp)
         {
-            if (name == null || content == null)
+            if (fp.Name == null || fp.Content == null)
             {
                 throw new ArgumentException("Properties can't be null!");
             }
 
-            Name = name;
-            Content = content;
+            Name = fp.Name;
+            Content = fp.Content;
 
         }
 

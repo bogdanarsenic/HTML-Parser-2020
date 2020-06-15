@@ -25,7 +25,7 @@ namespace Client
             {
                 Console.WriteLine("-----MENU-----");
                 Console.WriteLine("Choose an option from menu: ");
-                Console.WriteLine("1. Insert file path");
+                Console.WriteLine("1. Insert file name");
                 Console.WriteLine("2. Write html directly");
                 Console.WriteLine("If you want to exit - click X");
                 Console.WriteLine("--------------");
@@ -35,19 +35,18 @@ namespace Client
                 {
                     case "1": 
 
-                        Console.WriteLine("Insert file path:");
-                        string path = Console.ReadLine();
+                        Console.WriteLine("Insert file name:");
+                        string name = Console.ReadLine();
                         
-                        if(!validate.CheckIfStringEmpty(path) && validate.CheckIfPathCorrect(path))
+                        if(!validate.CheckIfStringEmpty(name) && validate.CheckIfPathCorrect(name))
                         {
                             //Forward to parser
-                            FileParser fp1 = new FileParser();
-                            string checkIfValidFileContent1 = "";
-                            checkIfValidFileContent1 = fp1.OpenExistingFileForParsing(path);
+                            IFileParser fp1 = new FileParser();
+                            fp1.OpenExistingFileForParsing(name);
 
-                            if (!checkIfValidFileContent1.Equals("INVALID!"))
+                            if (!fp1.Content.Equals("INVALID!"))
                             {
-                                IController uIController1 = new Controller(path, checkIfValidFileContent1);
+                                IController uIController1 = new Controller(fp1);
                                 VirtualUI.VirtualUI virtualUI1 = new VirtualUI.VirtualUI(uIController1);
                                 UIClass ui = new UIClass(uIController1);
                             }
@@ -80,15 +79,14 @@ namespace Client
                         }
 
                         //Forward to parser
-                        FileParser fp2 = new FileParser();
+                        IFileParser fp2 = new FileParser();
                         fp2.CreateNewFileForParsing(fileName, textcontent);
 
-                        string checkIfValidFileContent2 = "";
-                        checkIfValidFileContent2 = fp2.OpenExistingFileForParsing(fileName);
+                        fp2.OpenExistingFileForParsing(fileName);
 
-                        if (!checkIfValidFileContent2.Equals("INVALID!"))
+                        if (!fp2.Content.Equals("INVALID!"))
                         {
-                            IController uIController2 = new Controller(fileName, checkIfValidFileContent2);
+                            IController uIController2 = new Controller(fp2);
                             VirtualUI.VirtualUI virtualUI2 = new VirtualUI.VirtualUI(uIController2);
                             UIClass ui = new UIClass(uIController2);
 
