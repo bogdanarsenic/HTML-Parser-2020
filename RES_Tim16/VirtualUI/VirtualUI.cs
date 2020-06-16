@@ -11,9 +11,6 @@ namespace VirtualUI
     public class VirtualUI
     {
 
-        public string Name { get; set; }
-        public string Content { get; set; }
-
         public IController controller;
 
 
@@ -21,24 +18,21 @@ namespace VirtualUI
         {
             this.controller = controller;
 
-            Name = controller.Name;
-            Content = controller.Content;
-
-            ParseInformationFromController(Name, Content);
+            ParseInformationFromController();
 
         }
 
-        public void ParseInformationFromController(string name, string content)
+        public void ParseInformationFromController()
         {
 
             Files file = new Files();
-            file.Name = name.Split('.')[0];
-            file.Extension = name.Split('.')[1];
-            file.Id = name;
+            file.Name = this.controller.Name.Split('.')[0];
+            file.Extension = this.controller.Name.Split('.')[1];
+            file.Id = this.controller.Name;
 
             FileContent fileContent = new FileContent();
             fileContent.FileId = file.Id;
-            fileContent.Content = content;
+            fileContent.Content = this.controller.Content;
 
             UpdatingDatabase update = new UpdatingDatabase(file, fileContent,this.controller);
 
