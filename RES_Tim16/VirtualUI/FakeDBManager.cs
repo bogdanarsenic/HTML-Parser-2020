@@ -9,21 +9,41 @@ namespace VirtualUI
 {
     public class FakeDBManager : Access.IDBManager
     {
+        static FakeDBManager instance;
+
+        public static FakeDBManager Instance
+        {
+            get
+            {
+                if (instance == null)
+                    return new FakeDBManager();
+                else
+                    return instance;
+            }
+        }
+
         private List<Delta> deltas = new List<Delta>();
         private List<Files> files = new List<Files>();
         private List<FileContent> fileContents = new List<FileContent>();
         
         public bool AddDelta(Delta d)
         {
-            try
+            if (d.FileId == null || d.Content == null || d.LineRange == null)
             {
-                deltas.Add(d);
-                return true;
+                throw new ArgumentNullException("Arguments can't be null");
             }
-            catch
+
+            if (d.FileId.Length > 50 || d.Content.Length > 500 || d.LineRange.Length > 50)
             {
+                throw new ArgumentException("It's above maximum for databases");
+            }
+
+            if (DeltaExists(d.FileId) || d.FileId == "")
                 return false;
-            }
+            else
+                deltas.Add(d);
+            return true;
+
 
         }
 
@@ -55,6 +75,12 @@ namespace VirtualUI
 
         public bool DeltaExists(string id)
         {
+            if(id==null)
+            {
+                throw new ArgumentNullException("Arguments can't be null");
+            }
+            
+
             Delta delta = deltas.FirstOrDefault(d => d.FileId == id);
             if(delta==null)
             {
@@ -62,6 +88,7 @@ namespace VirtualUI
             }
             return true;
         }
+
 
         public bool FileExists(string id)
         {
@@ -96,7 +123,19 @@ namespace VirtualUI
 
         public bool UpdateDelta(Delta d)
         {
+
+            if (d.FileId == null || d.Content == null || d.LineRange == null)
+            {
+                throw new ArgumentNullException("Arguments can't be null");
+            }
+
+            if (d.FileId.Length > 50 || d.Content.Length > 500 || d.LineRange.Length > 50)
+            {
+                throw new ArgumentException("It's above maximum for databases");
+            }
+
             Delta delta = deltas.FirstOrDefault(de => de.FileId == d.FileId);
+
             if (delta == null)
             {
                 return false;

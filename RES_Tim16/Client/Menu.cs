@@ -17,6 +17,8 @@ namespace Client
 
         public void Print()
         {
+            validate = new Validation();
+            key = "";
 
           while (!input)
             { 

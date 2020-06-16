@@ -18,7 +18,7 @@ namespace Parser
             IParser p = new Parser();
             list = p.SplitHtmlText(content);
 
-            string pathforParser = @"C:\Users\Dejan\Desktop\Tim16\" + name;
+            string pathforParser = @"C:\Users\Bogdan\Tim16\" + name;
 
             File.AppendAllLines(pathforParser, list);
         }
@@ -26,7 +26,7 @@ namespace Parser
         public void OpenExistingFileForParsing(string name)
         {
             bool checkIfOk = false;
-            string pathforParser = @"C:\Users\Dejan\Desktop\Tim16\" + name;
+            string pathforParser = @"C:\Users\Bogdan\Tim16\" + name;
             string textForParsing = File.ReadAllText(pathforParser);
 
             Console.WriteLine(textForParsing);

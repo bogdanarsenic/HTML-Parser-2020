@@ -3,10 +3,11 @@ using System.Data.Entity;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using VirtualUI.Models;
+using System.Diagnostics.CodeAnalysis;
 
 namespace VirtualUI
 {
-
+    [ExcludeFromCodeCoverage]
     public class FileContext : DbContext
     {
         public FileContext()

@@ -11,11 +11,11 @@ namespace VirtualUI.Controller
     {
         DBManager dBManager = DBManager.Instance;
 
+        FakeDBManager fake = FakeDBManager.Instance;
 
         public bool Add(Delta delta) //fejkovanje add delta metode
         {
-            try
-            {
+
                 if (dBManager.AddDelta(delta))
                 {
                     Console.WriteLine(DateTime.Now + ": Delta Added to Database.");
@@ -27,17 +27,26 @@ namespace VirtualUI.Controller
                     Console.WriteLine(DateTime.Now + ": Delta wasn't added to Database.");
                     return false;
                 }
-            }
-            catch
-            {
-                throw new ArgumentException("Something wrong with the AddDelta function for Database");
-            }
+        }
+
+        public bool FakeAdd(Delta delta) //fejkovanje add delta metode
+        {
+
+                if (fake.AddDelta(delta))
+                {
+                    Console.WriteLine(DateTime.Now + ": Delta Added to Database.");
+
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine(DateTime.Now + ": Delta wasn't added to Database.");
+                    return false;
+                }
         }
 
         public bool UpdateDelta(Delta delta)
         {
-            try
-            {
                 if (dBManager.UpdateDelta(delta))
                 {
                     Console.WriteLine(DateTime.Now + ": Delta Updated to Database.");
@@ -49,34 +58,55 @@ namespace VirtualUI.Controller
                     Console.WriteLine(DateTime.Now + ": Delta wasn't Updated to Database.");
                     return false;
                 }
-            }
-            catch
-            {
-                throw new ArgumentException("Something wrong with the UpdateDelta function for Database");
-            }
+        }
+
+        public bool FakeUpdateDelta(Delta delta)
+        {
+
+                if (fake.UpdateDelta(delta))
+                {
+                    Console.WriteLine(DateTime.Now + ": Delta Updated to Database.");
+
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine(DateTime.Now + ": Delta wasn't Updated to Database.");
+                    return false;
+                }
         }
 
         public bool DeltaExists(string id)
         {
-            try
-            {
-                if (dBManager.DeltaExists(id))
-                    return true;
-                else
+        
+            if (dBManager.DeltaExists(id))
+            { 
+                Console.WriteLine(DateTime.Now + ": Delta exists in Database.");
+                     return true;
+            }
+            else
                 {
-
                     Console.WriteLine(DateTime.Now + ": Delta doesn't exists in Database.");
                     return false;
-
                 }
-            }
-            catch
-            {
-                throw new ArgumentException("Something wrong with the DeltaExists function for Database");
 
+        }
+
+        public bool FakeDeltaExists(string id)
+        {
+            if (fake.DeltaExists(id))
+            {
+                Console.WriteLine(DateTime.Now + ": Delta exists in Database.");
+                return true;
+            }
+            else
+            {
+                Console.WriteLine(DateTime.Now + ": Delta doesn't exists in Database.");
+                return false;
             }
 
         }
+
     }
 
 }
