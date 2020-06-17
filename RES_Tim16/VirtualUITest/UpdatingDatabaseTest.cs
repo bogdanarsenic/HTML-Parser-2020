@@ -1,12 +1,79 @@
-﻿using System;
+﻿using Moq;
+using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VirtualUI;
+using VirtualUI.Controller;
+using VirtualUI.Models;
 
 namespace VirtualUITest
 {
-    class UpdatingDatabaseTest
+    [TestFixture]
+    public class UpdatingDatabaseTest
     {
+        private FileContent fileContent;
+        private Files file;
+
+        [Test]
+        [TestCase("NekiFajl")]
+        public void UpdateFileContentGoodGetFileContentId(string fileId)
+        {
+            Mock<IFileContentController> fileContentContrellerDouble = new Mock<IFileContentController>();
+            fileContentContrellerDouble.Setup(controller => controller.GetFileContentId(fileId)).Verifiable();
+
+            Mock<FileContent> fileContentDouble = new Mock<FileContent>();
+            fileContent = fileContentDouble.Object;
+
+            IUpdatingDatabase u = new UpdatingDatabase();
+
+            u.UpdateFileContent(fileContentContrellerDouble.Object, fileContent, fileId);
+            fileContentContrellerDouble.Verify(controller => controller.GetFileContentId(fileId), Times.Once);
+
+        }
+
+        [TestCase("NekiFajl")]
+        public void UpdateFileContentGoodUpdateFileContent(string fileId)
+        {
+            Mock<FileContent> fileContentDouble = new Mock<FileContent>();
+            fileContent = fileContentDouble.Object;
+
+            Mock<IFileContentController> fileContentContrellerDouble = new Mock<IFileContentController>();
+            fileContentContrellerDouble.Setup(controller => controller.UpdateFileContent(fileContent)).Verifiable();
+
+
+            IUpdatingDatabase u = new UpdatingDatabase();
+
+            u.UpdateFileContent(fileContentContrellerDouble.Object, fileContent, fileId);
+            fileContentContrellerDouble.Verify(controller => controller.UpdateFileContent(fileContent), Times.Once);
+
+        }
+
+
+        [Test]
+        public void UpdateFileContentGoodAddToDatabase()
+        {
+            Mock<FileContent> fileContentDouble = new Mock<FileContent>();
+            fileContent = fileContentDouble.Object;
+
+            Mock<IFileContentController> fileContentContrellerDouble = new Mock<IFileContentController>();
+            fileContentContrellerDouble.Setup(controller => controller.Add(fileContent)).Verifiable();
+
+            Mock<Files> fileDouble = new Mock<Files>();
+            file = fileDouble.Object;
+
+            Mock<IFileController> fileContrellerDouble = new Mock<IFileController>();
+            fileContrellerDouble.Setup(fileController => fileController.Add(file)).Verifiable();
+
+            IUpdatingDatabase u = new UpdatingDatabase();
+
+            u.AddToDatabase(file, fileContent, fileContrellerDouble.Object,fileContentContrellerDouble.Object);
+            fileContentContrellerDouble.Verify(controller => controller.Add(fileContent), Times.Once);
+            fileContrellerDouble.Verify(fileController => fileController.Add(file), Times.Once);
+
+        }
+
     }
 }

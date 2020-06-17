@@ -90,7 +90,7 @@ namespace VirtualUITest
             }
             );
         }
-/*
+        /*
         [Test]
         [TestCase("nesto.txt", "bezveze")]
         public void ParseInformationFromControllerGood(string name, string content)
@@ -102,24 +102,29 @@ namespace VirtualUITest
             IController novi = nestoDouble.Object;
 
             Mock<VirtualUI.VirtualUI> virtualDouble = new Mock<VirtualUI.VirtualUI>(novi);
+            virtualUI = virtualDouble.Object;
+
 
             Mock<Files> filesDouble = new Mock<Files>();
+            filesDouble.Setup(files => files.Name).Returns(name.Split('.')[0]);
+            filesDouble.Setup(files => files.Extension).Returns(name.Split('.')[1]);
+            filesDouble.Setup(files => files.Id).Returns(name);
+
             file = filesDouble.Object;
 
             Mock<FileContent> fileContentDouble = new Mock<FileContent>();
+            fileContentDouble.Setup(fileContent => fileContent.FileId).Returns(name);
+            fileContentDouble.Setup(fileContent => fileContent.Content).Returns(content);
+
             fileContent = fileContentDouble.Object;
 
-            Mock<IUpdatingDatabase> updatingDouble = new Mock<IUpdatingDatabase>();
-            updatingDatabase = updatingDouble.Object;
-
-            virtualDouble.Setup(vUI => vUI.update!=null).Verifiable();
-            virtualUI = virtualDouble.Object;
             virtualUI.ParseInformationFromController();
-            virtualDouble.Verify((vUI => vUI.update != null));
+
+            Assert.AreEqual(virtualUI.file,file);
+            Assert.AreEqual(virtualUI.fileContent, fileContent);
 
         }
-
-    */
+        */
 
         [Test]
         [TestCase(".","bezveze")]
@@ -148,7 +153,7 @@ namespace VirtualUITest
         [TearDown]
         public void TearDown()
         {
-
+            controller = null;
         }
 
     }

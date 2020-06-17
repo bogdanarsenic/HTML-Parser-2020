@@ -633,6 +633,8 @@ namespace VirtualUITest
             delta2 = null;
             fileContent = null;
             fileContent2 = null;
+            file = null;
+          
         }
     }
 }

@@ -29,6 +29,11 @@ namespace Parser
             string pathforParser = @"C:\Users\Bogdan\Tim16\" + name;
             string textForParsing = File.ReadAllText(pathforParser);
 
+            if (textForParsing.EndsWith("\n"))
+            {
+                textForParsing=textForParsing.Remove(textForParsing.Length - 2, 2);
+            }
+
             Console.WriteLine(textForParsing);
 
             IParser p1 = new Parser();

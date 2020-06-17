@@ -15,11 +15,6 @@ namespace VirtualUITest
     public class SendDeltaInformationTest
     {
         private Delta delta;
-        [SetUp]
-        public void SetUp()
-        {
-
-        }
 
         [Test]
         [TestCase(null)]
@@ -54,10 +49,5 @@ namespace VirtualUITest
 
         }
 
-        [TearDown]
-        public void TearDown()
-        {
-
-        }
     }
 }

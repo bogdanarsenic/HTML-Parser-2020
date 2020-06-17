@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VirtualUITest
 {
-    class CompareFilesTest
+    public class CompareFilesTest
     {
     }
 }

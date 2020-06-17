@@ -73,13 +73,15 @@ namespace Client
                                 Console.WriteLine("Write file content:");
                                 string fileContent = Console.ReadLine();
 
-                                if(validate.CheckIfStringEmpty(fileContent))
+                                if (validate.CheckIfStringEmpty(fileContent))
                                 {
                                     break;
                                 }
 
                                 //Forward to parser
                                 IFileParser fp2 = new FileParser();
+
+                                
                                 fp2.CreateNewFileForParsing(nameFile2, fileContent);
 
                                 fp2.OpenExistingFileForParsing(nameFile2);
@@ -88,6 +90,7 @@ namespace Client
                                 {
                                     IController uIController2 = new Controller(fp2);
                                     VirtualUI.VirtualUI virtualUI2 = new VirtualUI.VirtualUI(uIController2);
+                                    virtualUI2.ParseInformationFromController();
                                     UIClass ui = new UIClass(uIController2);
 
                                 }
