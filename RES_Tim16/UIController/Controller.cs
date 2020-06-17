@@ -16,8 +16,6 @@ namespace UIController
         public string DatabaseContent { get; set; }
         public IFileParser fp;
 
-        public Controller()
-        { }
 
         public Controller(IFileParser fp)
         {

@@ -41,7 +41,8 @@ namespace VirtualUI
                 if (delta != null)
                 {
                     UpdateFileContent(fileContentController, fileContent, file.Id);
-                    SendDeltaInformation sd = new SendDeltaInformation(delta, databaseContent, ic);
+                    SendDeltaInformation sd = new SendDeltaInformation(ic);
+                    sd.Send(delta, databaseContent);
 
                 }
                 else

@@ -90,7 +90,7 @@ namespace VirtualUITest
             }
             );
         }
-
+/*
         [Test]
         [TestCase("nesto.txt", "bezveze")]
         public void ParseInformationFromControllerGood(string name, string content)
@@ -119,7 +119,7 @@ namespace VirtualUITest
 
         }
 
-
+    */
 
         [Test]
         [TestCase(".","bezveze")]
