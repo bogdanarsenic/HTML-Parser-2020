@@ -17,6 +17,8 @@ namespace VirtualUITest
 
         private Delta delta;
         private Delta delta2;
+        private FileContent fileContent;
+        private FileContent fileContent2;
 
 
         [SetUp]
@@ -27,6 +29,12 @@ namespace VirtualUITest
             deltaDouble.Setup(delta => delta.Content).Returns("Neki kontent");
             deltaDouble.Setup(delta => delta.LineRange).Returns("1,2,");
             delta = deltaDouble.Object;
+
+            Mock<FileContent> fileContentDouble = new Mock<FileContent>();
+            fileContentDouble.Setup(fileContent => fileContent.FileId).Returns("bzv.txt");
+            fileContentDouble.Setup(fileContent => fileContent.Content).Returns("Neki kontent");
+            fileContentDouble.Setup(fileContent => fileContent.Id).Returns("gegegegege");
+            fileContent = fileContentDouble.Object;
         }
 
         #region DeltaMethodTests
@@ -248,7 +256,7 @@ namespace VirtualUITest
         public void DeltaDoesntExists(string id)
         {
 
-            IDBManager fakeDatabase = new FakeDBManager();
+            FakeDBManager fakeDatabase = new FakeDBManager();
 
             Assert.AreEqual(false, fakeDatabase.DeltaExists(id));
         }
@@ -257,10 +265,228 @@ namespace VirtualUITest
 
         #endregion
 
+        #region FileContentMethods
+
+        [Test]
+        [TestCase("bzv.txt")]
+        public void AddFileContentGood(string id)
+        {
+            FakeDBManager fakeDatabase = new FakeDBManager();
+
+            fakeDatabase.AddFileContent(fileContent);
+            Assert.AreEqual(fileContent.Content, fakeDatabase.GetContent(id));
+        }
+
+        [Test]
+        [TestCase(null, "nesto", "9,")]
+        [TestCase("zv", null, "9,")]
+        [TestCase("nesto", "nesto", null)]
+        public void AddFileContentBadNull(string fileid, string content, string id)
+        {
+            Mock<FileContent> fileContentDouble2 = new Mock<FileContent>();
+            fileContentDouble2.Setup(fileContent => fileContent.FileId).Returns(fileid);
+            fileContentDouble2.Setup(fileContent => fileContent.Content).Returns(content);
+            fileContentDouble2.Setup(fileContent => fileContent.Id).Returns(id);
+
+            fileContent = fileContentDouble2.Object;
+
+            IDBManager fakeDatabase = new FakeDBManager();
+
+            Assert.Throws<ArgumentNullException>(() =>
+            {
+                fakeDatabase.AddFileContent(fileContent);
+            }
+            );
+
+        }
+
+        [Test]
+        [TestCase("111111111111111111111111111111111111111111111111111", "nesto", "9,")]
+
+        public void AddFileContentBadExceptionLength(string fileid, string content, string id)
+        {
+
+            Mock<FileContent> fileContentDouble2 = new Mock<FileContent>();
+            fileContentDouble2.Setup(fileContent => fileContent.FileId).Returns(fileid);
+            fileContentDouble2.Setup(fileContent => fileContent.Content).Returns(content);
+            fileContentDouble2.Setup(fileContent => fileContent.Id).Returns(id);
+
+            fileContent = fileContentDouble2.Object;
+
+            IDBManager fakeDatabase = new FakeDBManager();
+
+            Assert.Throws<ArgumentException>(() =>
+            {
+                fakeDatabase.AddFileContent(fileContent);
+            }
+            );
+
+        }
+
+
+        [Test]
+        [TestCase("", "nesto", "9,")]
+        [TestCase("nesto", "", "9,")]
+
+        public void AddFileContentBadEmptyString(string fileid, string content, string id)
+        {
+            Mock<FileContent> fileContentDouble2 = new Mock<FileContent>();
+            fileContentDouble2.Setup(fileContent => fileContent.FileId).Returns(fileid);
+            fileContentDouble2.Setup(fileContent => fileContent.Content).Returns(content);
+            fileContentDouble2.Setup(fileContent => fileContent.Id).Returns(id);
+
+            fileContent = fileContentDouble2.Object;
+
+            IDBManager fakeDatabase = new FakeDBManager();
+
+            Assert.AreEqual(false, fakeDatabase.AddFileContent(fileContent));
+        }
+
+
+        [Test]
+        [TestCase("bzv.txt", "novo", "novo")]
+        public void UpdateFileContentGood(string fileid, string content, string id)
+        {
+            Mock<FileContent> fileContentDouble2 = new Mock<FileContent>();
+            fileContentDouble2.Setup(fileContent2 => fileContent2.FileId).Returns(fileid);
+            fileContentDouble2.Setup(fileContent2 => fileContent2.Content).Returns(content);
+            fileContentDouble2.Setup(fileContent2 => fileContent2.Id).Returns(id);
+
+            fileContent2 = fileContentDouble2.Object;
+
+            FakeDBManager fakeDatabase = new FakeDBManager();
+
+            fakeDatabase.AddFileContent(fileContent);
+
+            fakeDatabase.UpdateFileContent(fileContent2);
+
+            Assert.AreEqual(fakeDatabase.GetContent(fileid), fileContent2.Content);
+
+        }
+
+        [Test]
+        [TestCase(null, "nesto", "9,")]
+        [TestCase("zv", null, "9,")]
+        [TestCase("nesto", "nesto", null)]
+        public void UpdateFileContentBadNullException(string fileid, string content, string id)
+        {
+            Mock<FileContent> fileContentDouble2 = new Mock<FileContent>();
+            fileContentDouble2.Setup(fileContent => fileContent.FileId).Returns(fileid);
+            fileContentDouble2.Setup(fileContent => fileContent.Content).Returns(content);
+            fileContentDouble2.Setup(fileContent => fileContent.Id).Returns(id);
+
+            fileContent = fileContentDouble2.Object;
+
+            IDBManager fakeDatabase = new FakeDBManager();
+
+            Assert.Throws<ArgumentNullException>(() =>
+            {
+                fakeDatabase.UpdateFileContent(fileContent);
+            }
+            );
+
+        }
+
+        [Test]
+        [TestCase("111111111111111111111111111111111111111111111111111", "nesto", "9,")]
+        [TestCase("zv", "nesto", "111111111111111111111111111111111111111111111111111")]
+
+        public void UpdateFileContentBadExceptionLength(string fileid, string content, string id)
+        {
+            Mock<FileContent> fileContentDouble2 = new Mock<FileContent>();
+            fileContentDouble2.Setup(fileContent => fileContent.FileId).Returns(fileid);
+            fileContentDouble2.Setup(fileContent => fileContent.Content).Returns(content);
+            fileContentDouble2.Setup(fileContent => fileContent.Id).Returns(id);
+
+            fileContent = fileContentDouble2.Object;
+
+            IDBManager fakeDatabase = new FakeDBManager();
+
+            Assert.Throws<ArgumentException>(() =>
+            {
+                fakeDatabase.UpdateFileContent(fileContent);
+            }
+            );
+
+        }
+
+        [Test]
+        [TestCase("bzv.txt")]
+        public void GetContentGood(string id)
+        {
+            IDBManager fakeDatabase = new FakeDBManager();
+
+            fakeDatabase.AddFileContent(fileContent);
+            Assert.AreEqual(fileContent.Content, fakeDatabase.GetContent(id));
+        }
+
+        [Test]
+        [TestCase(null)]
+        public void GetContentBadNull(string id)
+        {
+            IDBManager fakeDatabase = new FakeDBManager();
+
+            Assert.Throws<ArgumentNullException>(() =>
+            {
+                fakeDatabase.GetContent(id);
+            }
+            );
+        }
+
+        [Test]
+        [TestCase("nekiBzv")]
+        public void GetContentIdDoesntExist(string id)
+        {
+
+            FakeDBManager fakeDatabase = new FakeDBManager();
+
+            Assert.AreEqual("INVALID", fakeDatabase.GetContent(id));
+        }
+
+
+
+        [Test]
+        [TestCase("bzv.txt")]
+        public void GetFileContentIdGood(string id)
+        {
+            IDBManager fakeDatabase = new FakeDBManager();
+
+            fakeDatabase.AddFileContent(fileContent);
+            Assert.AreEqual(fileContent.Id, fakeDatabase.GetFileContentId(id));
+        }
+
+        [Test]
+        [TestCase(null)]
+        public void GetFileContentIdBadNull(string id)
+        {
+            IDBManager fakeDatabase = new FakeDBManager();
+
+            Assert.Throws<ArgumentNullException>(() =>
+            {
+                fakeDatabase.GetFileContentId(id);
+            }
+            );
+        }
+
+        [Test]
+        [TestCase("nekiBzv")]
+        public void GetFileContentIdDoesntExists(string id)
+        {
+
+            FakeDBManager fakeDatabase = new FakeDBManager();
+
+            Assert.AreEqual("INVALID", fakeDatabase.GetFileContentId(id));
+        }
+
+        #endregion
+
         [TearDown]
         public void TearDown()
         {
             delta = null;
+            delta2 = null;
+            fileContent = null;
+            fileContent2 = null;
         }
     }
 }

@@ -172,6 +172,16 @@ namespace VirtualUI
 
         public bool AddFileContent(FileContent fcontent)
         {
+            if(fcontent.Id==null||fcontent.FileId==null||fcontent.Content==null)
+            {
+                throw new ArgumentNullException ("Values can't be null");
+            }
+
+            if(fcontent.Content=="" || fcontent.Id=="")
+            {
+                return false;
+            }
+
             using (var dbContext = new FileContext())
             {
                 try
@@ -186,12 +196,24 @@ namespace VirtualUI
                 {
                     Console.WriteLine(DateTime.Now + ": FileContent wasn't added to Database.");
                     return false;
+                    throw new ArgumentException("Out of range!");
+                    
                 }
             }
         }
 
         public bool UpdateFileContent(FileContent fc)
         {
+            if (fc.Id == null || fc.FileId == null || fc.Content == null)
+            {
+                throw new ArgumentNullException("Values can't be null");
+            }
+
+            if (fc.Content == "" || fc.Id == "")
+            {
+                return false;
+            }
+
             using (var dbContext = new FileContext())
             {
                 var oldFileContent = dbContext.FileContents.Find(fc.Id);
@@ -204,6 +226,7 @@ namespace VirtualUI
                 }
                 else
                 {
+
                     oldFileContent.Content = fc.Content;
                     oldFileContent.FileId = fc.FileId;
                     oldFileContent.Id = fc.Id;
@@ -217,6 +240,7 @@ namespace VirtualUI
                     {
                         Console.WriteLine(DateTime.Now + ": Something wrong with FileContent updating to Database.");
                         return false;
+                        throw new ArgumentException("Out of range!");
                     }
 
                 }
@@ -225,6 +249,12 @@ namespace VirtualUI
 
         public string GetFileContentId(string fileId)
         {
+            if (fileId == null)
+            {
+                throw new ArgumentNullException("Arguments can't be null");
+            }
+
+
             FileContent fc = null;
             using (var dbContext = new FileContext())
             {
@@ -251,6 +281,10 @@ namespace VirtualUI
 
         public string GetContent(string id)
         {
+            if(id==null)
+            {
+                throw new ArgumentNullException("Arguments can't be null");
+            }
             using (var dbContext = new FileContext())
             {
 

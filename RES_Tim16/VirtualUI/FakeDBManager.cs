@@ -108,6 +108,10 @@ namespace VirtualUI
 
         public string GetContent(string id)
         {
+            if(id==null)
+            {
+                throw new ArgumentNullException("Arguments can't be null");
+            }
             FileContent fileContent = fileContents.FirstOrDefault(fc => fc.FileId == id);
             if(fileContent==null)
             {
@@ -128,9 +132,13 @@ namespace VirtualUI
         }
 
 
-        public string GetFileContentId(string fileId)
+        public string GetFileContentId(string id)
         {
-            FileContent fileContent = fileContents.FirstOrDefault(fc => fc.FileId == fileId);
+            if (id == null)
+            {
+                throw new ArgumentNullException("Arguments can't be null");
+            }
+            FileContent fileContent = fileContents.FirstOrDefault(fc => fc.FileId == id);
             if (fileContent == null)
             {
                 return "INVALID";
@@ -168,14 +176,30 @@ namespace VirtualUI
 
         public bool UpdateFileContent(FileContent fcontent)
         {
-            FileContent fContent = fileContents.FirstOrDefault(f => f.Id == fcontent.Id);
+
+            if (fcontent.FileId == null || fcontent.Content == null || fcontent.Id == null)
+            {
+                throw new ArgumentNullException("Arguments can't be null");
+            }
+
+            if (fcontent.FileId.Length > 50 || fcontent.Content.Length > 500 || fcontent.Id.Length > 50)
+            {
+                throw new ArgumentException("It's above maximum for databases");
+            }
+
+            FileContent fContent = fileContents.FirstOrDefault(f => f.FileId == fcontent.FileId);
             if (fContent == null)
             {
                 return false;
             }
-            fContent.Id = fcontent.Id;
-            fContent.FileId = fcontent.FileId;
-            fContent.Content = fcontent.Content;
+
+            fileContents.Remove(fContent);
+            FileContent fc = new FileContent();
+
+            fc.Id = fcontent.Id;
+            fc.FileId = fcontent.FileId;
+            fc.Content = fcontent.Content;
+            fileContents.Add(fcontent);
             return true;
         }
     }
