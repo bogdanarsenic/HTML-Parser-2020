@@ -30,6 +30,8 @@ namespace VirtualUI
             {
                 try
                 {
+                    if (delta.FileId == "")
+                        return false;
                     dbContext.Deltas.Add(delta);
                     dbContext.SaveChanges();
 
@@ -46,6 +48,10 @@ namespace VirtualUI
 
         public bool DeltaExists(string id)
         {
+            if(id==null)
+            {
+                throw new ArgumentNullException("Id can't be null");
+            }
             using (var dbContext = new FileContext())
             {
 
@@ -62,7 +68,7 @@ namespace VirtualUI
                     }
                     else
                     {
-                        Console.WriteLine(DateTime.Now + ": Delta exists in Database.");
+                        Console.WriteLine(DateTime.Now + ": Delta doesn't exist in Database.");
                         return false;
                     }
                 }

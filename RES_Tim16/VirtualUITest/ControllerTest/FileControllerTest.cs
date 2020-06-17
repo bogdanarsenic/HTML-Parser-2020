@@ -27,6 +27,17 @@ namespace VirtualUITest.ControllerTest
         }
 
         [Test]
+        [TestCase(null)]
+        public void FileControllerBadParameter(IDBManager database)
+        {
+            Assert.Throws<ArgumentNullException>(() =>
+            {
+                IFileController deltaController2 = new FileController(database);
+            }
+            );
+        }
+
+        [Test]
 
         public void AddFileMockVerify()
         {

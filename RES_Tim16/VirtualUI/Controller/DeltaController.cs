@@ -12,11 +12,11 @@ namespace VirtualUI.Controller
     public class DeltaController : IDeltaController
     {
 
-        private IDBManager dBManager;
+        public IDBManager dBManager;
 
         public DeltaController(IDBManager db)
         {
-            this.dBManager = db;
+            this.dBManager = db ?? throw new ArgumentNullException("IDBManager can't be null");
         }
 
         public DeltaController()
@@ -24,7 +24,7 @@ namespace VirtualUI.Controller
             this.dBManager = DBManager.Instance;
         }
 
-        public bool Add(Delta delta) //fejkovanje add delta metode
+        public bool Add(Delta delta)
         {
             return dBManager.AddDelta(delta);
         }

@@ -26,6 +26,17 @@ namespace VirtualUITest.ControllerTest
         }
 
         [Test]
+        [TestCase(null)]
+        public void FileContentControllerBadParameter(IDBManager database)
+        {
+            Assert.Throws<ArgumentNullException>(() =>
+            {
+                IFileContentController fileContentController2 = new FileContentController(database);
+            }
+            );
+        }
+
+        [Test]
         public void AddFileContentMockVerify()
         {
             Mock<IDBManager> databaseMock = new Mock<IDBManager>();

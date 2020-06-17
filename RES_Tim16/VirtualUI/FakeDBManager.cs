@@ -38,7 +38,7 @@ namespace VirtualUI
                 throw new ArgumentException("It's above maximum for databases");
             }
 
-            if (DeltaExists(d.FileId) || d.FileId == "")
+            if (DeltaExists(d.FileId) || d.FileId == "" ||d.Content=="" || d.LineRange=="")
                 return false;
             else
                 deltas.Add(d);
@@ -117,6 +117,17 @@ namespace VirtualUI
         }
 
 
+        public Delta GetDelta(string fileId)
+        {
+            Delta delta = deltas.FirstOrDefault(d => d.FileId == fileId);
+            if (delta == null)
+            {
+                return null;
+            }
+            return delta;
+        }
+
+
         public string GetFileContentId(string fileId)
         {
             FileContent fileContent = fileContents.FirstOrDefault(fc => fc.FileId == fileId);
@@ -146,9 +157,12 @@ namespace VirtualUI
             {
                 return false;
             }
-            delta.FileId = d.FileId;
-            delta.Content = d.Content;
-            delta.LineRange = d.LineRange;
+            deltas.Remove(delta);
+            Delta deltanovo = new Delta();
+            deltanovo.FileId = d.FileId;
+            deltanovo.Content = d.Content;
+            deltanovo.LineRange = d.LineRange;
+            deltas.Add(deltanovo);
             return true;
         }
 

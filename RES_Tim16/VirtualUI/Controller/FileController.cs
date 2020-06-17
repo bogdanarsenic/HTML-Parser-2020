@@ -14,7 +14,7 @@ namespace VirtualUI.Controller
 
         public FileController(IDBManager db)
         {
-            this.dBManager = db;
+            this.dBManager = db ?? throw new ArgumentNullException("IDBManager can't be null");
         }
 
         public FileController()
