@@ -3,13 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VirtualUI.Access;
 using VirtualUI.Models;
 
 namespace VirtualUI.Controller
 {
     public class FileContentController : IFileContentController
     {
-        DBManager dBManager = DBManager.Instance;
+        private IDBManager dBManager;
+
+        public FileContentController(IDBManager db)
+        {
+            this.dBManager = db;
+        }
+
+        public FileContentController()
+        {
+            this.dBManager = DBManager.Instance;
+        }
 
 
         public bool Add(FileContent fileContent)

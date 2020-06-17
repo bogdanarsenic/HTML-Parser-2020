@@ -231,7 +231,7 @@ namespace VirtualUI
                         return fc.Id;
                     }
 
-                    return "No FileContent with this fileID";
+                    return null;
                 }
                 catch
                 {
@@ -258,7 +258,7 @@ namespace VirtualUI
                         return fileContent.Content;
 
                     else
-                        return "Don't have content with this FileId";
+                        return null;
                 }
                 catch
                 {

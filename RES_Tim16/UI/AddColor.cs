@@ -43,9 +43,7 @@ namespace UI
                     if (databaseText.Length >= i)
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
-
                         Console.WriteLine("-" + i + "." + databaseText[i - 1]);
-
                     }
 
                     if (delta[y] == "")
@@ -57,6 +55,7 @@ namespace UI
                     {
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("+" + i + "." + newText[i - 1]);
+                        Console.ForegroundColor = ConsoleColor.White;
 
                         y++;
                     }
