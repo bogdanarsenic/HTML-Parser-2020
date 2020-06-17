@@ -9,7 +9,7 @@ using VirtualUI.Models;
 
 namespace VirtualUI
 {
-    public class UpdatingDatabase
+    public class UpdatingDatabase:IUpdatingDatabase
     {
         public IFileController fileController;
         public IFileContentController fileContentController;
