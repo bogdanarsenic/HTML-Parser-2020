@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI", "UI\UI.csproj", "{5EB2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualUITest", "VirtualUITest\VirtualUITest.csproj", "{1B0CF627-5CF9-4A08-A99D-91D44D0AEBB5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UIControllerTest", "UIControllerTest\UIControllerTest.csproj", "{E65854B4-82A6-42E5-99B0-161E3B73CEC8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +55,10 @@ Global
 		{1B0CF627-5CF9-4A08-A99D-91D44D0AEBB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B0CF627-5CF9-4A08-A99D-91D44D0AEBB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B0CF627-5CF9-4A08-A99D-91D44D0AEBB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E65854B4-82A6-42E5-99B0-161E3B73CEC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E65854B4-82A6-42E5-99B0-161E3B73CEC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E65854B4-82A6-42E5-99B0-161E3B73CEC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E65854B4-82A6-42E5-99B0-161E3B73CEC8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,6 +66,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{785F9D9D-85E6-4E8D-A18D-3DD99531723D} = {2537FE37-B87B-484F-9BA7-B1CC93C17797}
 		{1B0CF627-5CF9-4A08-A99D-91D44D0AEBB5} = {2537FE37-B87B-484F-9BA7-B1CC93C17797}
+		{E65854B4-82A6-42E5-99B0-161E3B73CEC8} = {2537FE37-B87B-484F-9BA7-B1CC93C17797}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D2657070-2841-462C-B9DB-DC143DA7A0B7}

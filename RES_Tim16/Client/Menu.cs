@@ -52,6 +52,7 @@ namespace Client
                                     {
                                         IController uIController1 = new Controller(p1);
                                         VirtualUI.VirtualUI virtualUI1 = new VirtualUI.VirtualUI(uIController1);
+                                        virtualUI1.ParseInformationFromController();
                                         UIClass ui = new UIClass(uIController1);
                                     }
                                 }

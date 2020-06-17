@@ -12,18 +12,31 @@ namespace VirtualUI
     {
 
         public IController controller;
+        public IUpdatingDatabase update;
 
 
         public VirtualUI(IController controller)
         {
-            this.controller = controller;
+            if(controller==null||controller.Name==null||controller.Content==null)
+            {
+                throw new ArgumentNullException("Can't be null");
+            }
 
-            ParseInformationFromController();
+            if (controller.Name == "" || controller.Content == "")
+            {
+                throw new ArgumentException("Can't be empty");
+            }
+
+            this.controller = controller;
 
         }
 
         public void ParseInformationFromController()
         {
+            if(!controller.Name.Contains('.')||controller.Name.Split('.').Length != 2 || controller.Name == ".")
+            {
+                throw new ArgumentException("Must have one dot");
+            }
 
             Files file = new Files();
             file.Name = controller.Name.Split('.')[0];
@@ -34,8 +47,7 @@ namespace VirtualUI
             fileContent.FileId = file.Id;
             fileContent.Content = controller.Content;
 
-            UpdatingDatabase update = new UpdatingDatabase(file, fileContent, controller);
-
+             update = new UpdatingDatabase(file, fileContent, controller);
         }
 
     }

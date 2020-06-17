@@ -9,7 +9,7 @@ using VirtualUI.Models;
 
 namespace VirtualUI
 {
-    public class UpdatingDatabase
+    public class UpdatingDatabase:IUpdatingDatabase
     {
         public IFileController fileController;
         public IFileContentController fileContentController;
@@ -41,7 +41,8 @@ namespace VirtualUI
                 if (delta != null)
                 {
                     UpdateFileContent(fileContentController, fileContent, file.Id);
-                    SendDeltaInformation sd = new SendDeltaInformation(delta, databaseContent, ic);
+                    SendDeltaInformation sd = new SendDeltaInformation(ic);
+                    sd.Send(delta, databaseContent);
 
                 }
                 else

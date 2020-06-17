@@ -72,6 +72,7 @@
     <Compile Include="Access\IDBManager.cs" />
     <Compile Include="CompareFiles.cs" />
     <Compile Include="FakeDBManager.cs" />
+    <Compile Include="IUpdatingDatabase.cs" />
     <Compile Include="SendDeltaInformation.cs" />
     <Compile Include="UpdatingDatabase.cs" />
     <Compile Include="VirtualUI.cs" />
