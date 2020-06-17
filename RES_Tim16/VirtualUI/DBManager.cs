@@ -117,6 +117,15 @@ namespace VirtualUI
         #region FileOperations
         public bool AddFile(Files f)
         {
+            if(f.Id==null || f.Name==null || f.Extension==null)
+            {
+                throw new ArgumentNullException("Values can't be null");
+            }
+
+            if (f.Id == "" || f.Name == "" || f.Extension == "")
+            {
+                return false;
+            }
             using (var dbContext = new FileContext())
             {
                 try
@@ -130,12 +139,18 @@ namespace VirtualUI
                 {
                     Console.WriteLine("Somethingg is wrong the AddFile function for Database");
                     return false;
+                    throw new ArgumentException("Out of range!");
                 }
             }
         }
 
         public bool FileExists(string id)
         {
+            if (id == null)
+            {
+                throw new ArgumentNullException("Arguments can't be null");
+            }
+
             using (var dbContext = new FileContext())
             {
 
@@ -172,7 +187,7 @@ namespace VirtualUI
 
         public bool AddFileContent(FileContent fcontent)
         {
-            if(fcontent.Id==null||fcontent.FileId==null||fcontent.Content==null)
+            if(fcontent.FileId==null||fcontent.Content==null)
             {
                 throw new ArgumentNullException ("Values can't be null");
             }

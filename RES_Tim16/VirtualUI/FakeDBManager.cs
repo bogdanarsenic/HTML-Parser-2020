@@ -49,20 +49,27 @@ namespace VirtualUI
 
         public bool AddFile(Files f)
         {
-            try
+            if (f.Id == null || f.Name == null || f.Extension == null)
             {
-                files.Add(f);
-                return true;
+                throw new ArgumentNullException("Arguments can't be null");
             }
-            catch
+
+            if (f.Id.Length > 50 || f.Extension.Length > 10 || f.Name.Length > 50)
             {
+                throw new ArgumentException("It's above maximum for databases");
+            }
+
+            if (FileExists(f.Id) || f.Id == "" || f.Name == "" || f.Extension == "")
                 return false;
-            }
+            else
+                files.Add(f);
+            return true;
+
         }
 
         public bool AddFileContent(FileContent fcontent)
         {
-            if (fcontent.FileId == null || fcontent.Content == null || fcontent.Id == null)
+            if (fcontent.FileId == null || fcontent.Content == null)
             {
                 throw new ArgumentNullException("Arguments can't be null");
             }
@@ -98,6 +105,11 @@ namespace VirtualUI
 
         public bool FileExists(string id)
         {
+            if (id == null)
+            {
+                throw new ArgumentNullException("Arguments can't be null");
+            }
+
             Files file = files.FirstOrDefault(f => f.Id == id);
             if (file == null)
             {
