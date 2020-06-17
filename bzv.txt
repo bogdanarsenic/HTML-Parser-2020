@@ -6,10 +6,7 @@ Ispooo
 </head>
 <body>
 <p>
-Dodajemo nesto
-</p>
-<p>
-Dodajemo jos nesto
+Dodatak
 </p>
 </body>
 </html>

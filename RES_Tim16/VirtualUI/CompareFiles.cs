@@ -10,22 +10,11 @@ namespace VirtualUI
 {
     public class CompareFiles
     {
-        IDeltaController dc;
-        public string Content { get; set; }
-        public string DatabaseContent { get; set; }
-        public string FileId { get; set; }
+        public IDeltaController dc;
 
-
-        public CompareFiles(string content, string databaseContent, string fileId)
+        public CompareFiles()
         {
-            if (content == null || databaseContent == null || fileId == null)
-            {
-                throw new ArgumentException("Properties can't be null!");
-            }
 
-            Content = content;
-            DatabaseContent = databaseContent;
-            FileId = fileId;
         }
 
         public Delta Compare(string content, string databaseContent, string fileId)

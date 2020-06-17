@@ -13,12 +13,12 @@ namespace VirtualUI.Models
     public partial class FileContent
     {
         [StringLength(50)]
-        public string Id { get; set; }
+        public virtual string Id { get; set; }
 
         [StringLength(50)]
-        public string FileId { get; set; }
+        public virtual string FileId { get; set; }
 
         [StringLength(500)]
-        public string Content { get; set; }
+        public virtual string Content { get; set; }
     }
 }

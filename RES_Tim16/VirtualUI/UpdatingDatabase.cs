@@ -34,7 +34,7 @@ namespace VirtualUI
 
                 if (databaseContent != fileContent.Content)
                 {
-                   CompareFiles cf = new CompareFiles(fileContent.Content, databaseContent, file.Id);
+                   CompareFiles cf = new CompareFiles();
                    delta = cf.Compare(fileContent.Content, databaseContent, file.Id);
                 }
 
@@ -46,9 +46,6 @@ namespace VirtualUI
                 }
                 else
                 {
-                    Delta badDelta = new Delta();
-                    badDelta.LineRange = "";
-                    SendDeltaInformation sd = new SendDeltaInformation(badDelta, databaseContent, ic);
                     Console.WriteLine("No changes! File contents are completely the same");
                 }
             }

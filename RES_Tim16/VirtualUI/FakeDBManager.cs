@@ -9,7 +9,7 @@ namespace VirtualUI
 {
     public class FakeDBManager : Access.IDBManager
     {
-        static FakeDBManager instance;
+         static FakeDBManager instance;
 
         public static FakeDBManager Instance
         {
@@ -62,15 +62,21 @@ namespace VirtualUI
 
         public bool AddFileContent(FileContent fcontent)
         {
-            try
+            if (fcontent.FileId == null || fcontent.Content == null || fcontent.Id == null)
             {
-                fileContents.Add(fcontent);
-                return true;
+                throw new ArgumentNullException("Arguments can't be null");
             }
-            catch
+
+            if (fcontent.FileId.Length > 50 || fcontent.Content.Length > 500 || fcontent.Id.Length > 50)
             {
+                throw new ArgumentException("It's above maximum for databases");
+            }
+
+            if (fcontent.FileId == "" || fcontent.Content == "")
                 return false;
-            }
+            else
+                fileContents.Add(fcontent);
+            return true;
         }
 
         public bool DeltaExists(string id)

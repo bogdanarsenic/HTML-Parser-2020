@@ -14,12 +14,12 @@ namespace VirtualUI.Models
     {
         [Key]
         [StringLength(50)]
-        public string FileId { get; set; }
+        public virtual string FileId { get; set; }
 
         [StringLength(50)]
-        public string LineRange { get; set; }
+        public virtual string LineRange { get; set; }
 
         [StringLength(500)]
-        public string Content { get; set; }
+        public virtual string Content { get; set; }
     }
 }
