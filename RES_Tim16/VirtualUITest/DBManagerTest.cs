@@ -9,12 +9,15 @@ using VirtualUI;
 using VirtualUI.Access;
 using VirtualUI.Models;
 
-namespace VirtualUITest.ControllerTest
+namespace VirtualUITest
 {
     [TestFixture]
-    public class FileContentControllerTest
+    public class DBManagerTest
     {
         private FileContent fileContent;
+        private FileContent fileContent2;
+        private Files file;
+        private Delta delta;
         private const string FILEID = "1";
         private const string ID = "4i30i430i30i403";
         private const string CONTENT = "Nesto";
@@ -28,6 +31,8 @@ namespace VirtualUITest.ControllerTest
             contentDouble.Setup(content => content.Id).Returns(ID);
             contentDouble.Setup(content => content.Content).Returns(CONTENT);
             fileContent = contentDouble.Object;
+
+
             fakeDatabase = new FakeDBManager();
             fakeDatabase.AddFileContent(fileContent);
 
@@ -40,23 +45,11 @@ namespace VirtualUITest.ControllerTest
             Assert.IsNotNull(fc);
         }
 
-        [Test]
-        public void AddFileContentBadNullArgument()
-        {
-            fileContent.FileId = null;
-            fileContent.Content = "nneff";
-            fileContent.Id = "FakeContent";
-
-            Assert.Throws<ArgumentNullException>(() =>
-            {
-                fakeDatabase.AddFileContent(fileContent);
-            }
-            );
-        }
 
         [TearDown]
         public void TearDown()
         {
+            fileContent2 = null;
             fileContent = null;
         }
     }

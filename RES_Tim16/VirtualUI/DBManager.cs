@@ -32,10 +32,13 @@ namespace VirtualUI
                 {
                     dbContext.Deltas.Add(delta);
                     dbContext.SaveChanges();
+
+                    Console.WriteLine(DateTime.Now + ": Delta Added to Database.");
                     return true;
                 }
                 catch
                 {
+                    Console.WriteLine(DateTime.Now + ": Delta wasn't added to Database.");
                     return false;
                 }
             }
@@ -53,12 +56,19 @@ namespace VirtualUI
                     d = dbContext.Deltas.Find(id);
 
                     if (d != null)
+                    {
+                        Console.WriteLine(DateTime.Now + ": Delta exists in Database.");
                         return true;
+                    }
                     else
+                    {
+                        Console.WriteLine(DateTime.Now + ": Delta exists in Database.");
                         return false;
+                    }
                 }
                 catch
                 {
+                    Console.WriteLine(DateTime.Now + ": Something went wrong in DeltaExists method.");
                     return false;
                 }
             }
@@ -68,9 +78,11 @@ namespace VirtualUI
         {
             using (var dbContext = new FileContext())
             {
+
                 var oldDelta = dbContext.Deltas.Find(d.FileId);
                 if (oldDelta == null)
                 {
+                    Console.WriteLine("Can't update delta since it isn't in Database");
                     return false;
                 }
                 else
@@ -78,8 +90,18 @@ namespace VirtualUI
                     oldDelta.FileId = d.FileId;
                     oldDelta.LineRange = d.LineRange;
                     oldDelta.Content = d.Content;
-                    dbContext.SaveChanges();
-                    return true;
+
+                    try
+                    {
+                        dbContext.SaveChanges();
+                        Console.WriteLine(DateTime.Now + ": Delta Updated to Database.");
+                        return true;
+                    }
+                    catch
+                    {
+                        Console.WriteLine(DateTime.Now + ": Something wrong with Delta updating to Database.");
+                        return false;
+                    }
                 }
             }
         }
@@ -93,13 +115,14 @@ namespace VirtualUI
             {
                 try
                 {
-
                     dbContext.Files.Add(f);
                     dbContext.SaveChanges();
+                    Console.WriteLine("New file has been added.");
                     return true;
                 }
                 catch
                 {
+                    Console.WriteLine("Somethingg is wrong the AddFile function for Database");
                     return false;
                 }
             }
@@ -117,12 +140,21 @@ namespace VirtualUI
                     f = dbContext.Files.Find(id);
 
                     if (f != null)
+                    {
+                        Console.WriteLine("File has been found!");
                         return true;
+                    }
+
                     else
+                    {
+                        Console.WriteLine("File doesn't exist in database");
                         return false;
+                    }
+                       
                 }
                 catch
                 {
+                    Console.WriteLine("Something wrong with the function FileExists");
                     return false;
                 }
             }
@@ -141,10 +173,12 @@ namespace VirtualUI
                     fcontent.Id = Guid.NewGuid().ToString();
                     dbContext.FileContents.Add(fcontent);
                     dbContext.SaveChanges();
+                    Console.WriteLine(DateTime.Now + ": FileContent Added to Database.");
                     return true;
                 }
                 catch
                 {
+                    Console.WriteLine(DateTime.Now + ": FileContent wasn't added to Database.");
                     return false;
                 }
             }
@@ -158,6 +192,8 @@ namespace VirtualUI
 
                 if (oldFileContent == null)
                 {
+                    Console.WriteLine("Can't update filecontent since it isn't in Database");
+
                     return false;
                 }
                 else
@@ -165,8 +201,18 @@ namespace VirtualUI
                     oldFileContent.Content = fc.Content;
                     oldFileContent.FileId = fc.FileId;
                     oldFileContent.Id = fc.Id;
-                    dbContext.SaveChanges();
-                    return true;
+                    try
+                    {
+                        dbContext.SaveChanges();
+                        Console.WriteLine(DateTime.Now + ": FileContent Updated to Database.");
+                        return true;
+                    }
+                    catch
+                    {
+                        Console.WriteLine(DateTime.Now + ": Something wrong with FileContent updating to Database.");
+                        return false;
+                    }
+
                 }
             }
         }
@@ -178,10 +224,7 @@ namespace VirtualUI
             {
                 try
                 {
-
-
                     fc = dbContext.FileContents.FirstOrDefault(x => x.FileId == fileId);
-
 
                     if (fc != null)
                     {

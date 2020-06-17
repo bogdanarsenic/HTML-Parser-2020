@@ -26,15 +26,15 @@ namespace VirtualUI
         {
 
             Files file = new Files();
-            file.Name = this.controller.Name.Split('.')[0];
-            file.Extension = this.controller.Name.Split('.')[1];
-            file.Id = this.controller.Name;
+            file.Name = controller.Name.Split('.')[0];
+            file.Extension = controller.Name.Split('.')[1];
+            file.Id = controller.Name;
 
             FileContent fileContent = new FileContent();
             fileContent.FileId = file.Id;
-            fileContent.Content = this.controller.Content;
+            fileContent.Content = controller.Content;
 
-            UpdatingDatabase update = new UpdatingDatabase(file, fileContent,this.controller);
+            UpdatingDatabase update = new UpdatingDatabase(file, fileContent, controller);
 
         }
 

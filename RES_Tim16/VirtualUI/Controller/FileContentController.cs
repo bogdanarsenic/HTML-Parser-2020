@@ -14,46 +14,12 @@ namespace VirtualUI.Controller
 
         public bool Add(FileContent fileContent)
         {
-            try
-            {
-                if (dBManager.AddFileContent(fileContent))
-                {
-                    Console.WriteLine(DateTime.Now + ": FileContent Added to Database.");
-
-                    return true;
-                }
-                else
-                {
-                    Console.WriteLine(DateTime.Now + ": FileContent wasn't added to Database.");
-                    return false;
-                }
-            }
-            catch
-            {
-                throw new ArgumentException("Something wrong with the function AddFileContent for Database");
-            }
+            return dBManager.AddFileContent(fileContent);         
         }
 
         public bool UpdateFileContent(FileContent fileContent)
         {
-            try
-            {
-                if (dBManager.UpdateFileContent(fileContent))
-                {
-                    Console.WriteLine(DateTime.Now + ": FileContent Updated to Database.");
-
-                    return true;
-                }
-                else
-                {
-                    Console.WriteLine(DateTime.Now + ": FileContent wasn't Updated to Database.");
-                    return false;
-                }
-            }
-            catch
-            {
-                throw new ArgumentException("Something wrong with the function UpdateFileContent for Database");
-            }
+                return dBManager.UpdateFileContent(fileContent);
         }
 
         public string GetContent(string id)

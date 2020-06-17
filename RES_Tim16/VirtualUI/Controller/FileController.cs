@@ -13,40 +13,12 @@ namespace VirtualUI.Controller
 
         public bool FileExists(string id)
         {
-            try
-            {
-                if (dBManager.FileExists(id))
-                    return true;
-                else
-                    return false;
-            }
-            catch
-            {
-                throw new ArgumentException("Something wrong with the function FileExists for Database");
-            }
-
-        }
+            return dBManager.FileExists(id);
+        }   
 
         public bool Add(Files f)
         {
-            try
-            {
-                if (dBManager.AddFile(f))
-                {
-                    Console.WriteLine("New file has been added.");
-                    return true;
-                }
-                else
-                {
-                    Console.WriteLine("Somethingg is wrong the AddFile function for Database");
-                    return false;
-                }
-
-            }
-            catch 
-            {
-                throw new ArgumentException("Something wrong with the AddFile function for Database");
-            }
+            return dBManager.AddFile(f);            
         }
     }
 }

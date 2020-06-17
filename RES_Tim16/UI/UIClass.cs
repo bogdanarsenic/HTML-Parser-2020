@@ -14,9 +14,9 @@ namespace UI
 
         public UIClass(IController controller)
         {
-            if (controller.LineRange == "" || controller.LineRange==null)
+            if (controller.DatabaseContent==null || controller.DeltaContent==null || controller.LineRange==null)
             {
-                Console.WriteLine("This is a content which is the same: ");
+                Console.WriteLine("This is a content: ");
                 Console.WriteLine(controller.Content);
                 Console.ReadLine();
             }
@@ -25,7 +25,6 @@ namespace UI
                 this.controller = controller;
                 int[] linenumbers = GetLineRange(this.controller.LineRange);
 
-                // add colour
                 AddColor ac = new AddColor(linenumbers, this.controller);
             }
         }

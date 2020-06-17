@@ -17,15 +17,14 @@ namespace VirtualUITest.ControllerTest
     {
         private Delta delta;
         private Delta delta2;
-        private const string FileId = "1";
-        private DeltaController deltaController;
+        private const string FILEID = "1";
+        private IDeltaController deltaController;
         private IDBManager database;
 
         [SetUp]
         public void SetUp()
         {
 
-            database = FakeDBManager.Instance;
 
             Mock<Delta> deltaDouble = new Mock<Delta>();
             delta = deltaDouble.Object;
@@ -33,10 +32,19 @@ namespace VirtualUITest.ControllerTest
             Mock<Delta> deltaDouble2 = new Mock<Delta>();
             delta2 = deltaDouble2.Object;
 
-            Mock<DeltaController> deltaControllerDouble = new Mock<DeltaController>();
-            deltaController = deltaControllerDouble.Object;
-
         }
+
+        [Test]
+
+        public void AddDeltaGoodProba()
+        {
+            Mock<IDBManager> database = new Mock<IDBManager>();
+            database.Setup(deltacontroller => deltacontroller.AddDelta(delta)).Verifiable();
+            IDBManager fakeDb = database.Object;
+            fakeDb.AddDelta(delta);
+            database.Verify(deltacontroller => deltacontroller.AddDelta(delta), Times.Once);
+        }
+
 
         [Test]
 
@@ -182,13 +190,14 @@ namespace VirtualUITest.ControllerTest
         [TestCase("1")]
         public void DeltaExistsGood(string id)
         {
-            delta.FileId = id;
+            delta.FileId = "nesto";
             delta.LineRange = "1,";
-            delta.Content = "Fake";
-            deltaController.FakeAdd(delta);
+            delta.Content = "FakeContent";
 
-            Assert.AreEqual(true, deltaController.FakeDeltaExists(id));
+            deltaController.FakeAdd(delta);
+            Assert.AreEqual(true, deltaController.FakeDeltaExists(delta.FileId));
         }
+        
 
         [Test]
         [TestCase("1")]
@@ -199,6 +208,19 @@ namespace VirtualUITest.ControllerTest
             delta.Content = "Fake";
 
             Assert.AreEqual(false, deltaController.FakeDeltaExists(id));
+
+        }
+
+        public void DeltaExistsBadNull()
+        {
+            delta.FileId = null;
+            delta.LineRange = "1,";
+            delta.Content = "Fake";
+            Assert.Throws<ArgumentNullException>(() =>
+            {
+                deltaController.FakeDeltaExists(null);
+            }
+           );
 
         }
 
