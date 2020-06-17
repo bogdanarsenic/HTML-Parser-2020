@@ -12,13 +12,18 @@ namespace VirtualUI
     {
         public IDeltaController dc;
 
-        public CompareFiles()
+        public CompareFiles(IDeltaController dc)
         {
-
+            this.dc = dc ?? throw new ArgumentNullException("IDeltaController can't be null");
         }
 
         public Delta Compare(string content, string databaseContent, string fileId)
         {
+            if(!content.Contains("\r\n") || !databaseContent.Contains("\r\n"))
+            {
+                throw new ArgumentException("Must have \r\n so it could be parsed");
+            }
+
 
             string[] newText = content.Split(new string[] { "\r\n" }, StringSplitOptions.None);
             string[] previous = databaseContent.Split(new string[] { "\r\n" }, StringSplitOptions.None);

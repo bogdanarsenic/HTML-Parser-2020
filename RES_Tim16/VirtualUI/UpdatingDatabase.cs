@@ -39,7 +39,7 @@ namespace VirtualUI
 
                 if (databaseContent != fileContent.Content)
                 {
-                   CompareFiles cf = new CompareFiles();
+                   CompareFiles cf = new CompareFiles(deltaController);
                    delta = cf.Compare(fileContent.Content, databaseContent, file.Id);
                 }
 
