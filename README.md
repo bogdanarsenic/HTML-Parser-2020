@@ -5,7 +5,7 @@
 Projekat broj IV je jasno podeljen na 5 komponenti. Svaka komponenta u sebi ima odredjeni broj klasa. Cilj je napraviti sto vecu izolaciju izmedju njih i ispostovati SOLID principe. Izolacija nam je potrebna kako bismo razdvojili nas sistem na vise podsistema, razdvojili zadatke na set malih taskova, lakse isplanirali, implementirali, a samim tim i lakse istestirali komponente.
 Nas komponent dijagram: 
 
-![alt text](https://imgur.com/a/63rHYbN)
+![alt text](https://imgur.com/zh42QSX)
 
 Svaka komponenta ima odredjene odgovornosti koje je razlikuju od drugih. Klijent unosi podatke, parser proverava da li je uneseni html validan i upisuje u fajl, UI Controller razmenjuje informacije i glumi medijatora, VirtualUI radi sa bazom i na kraju UI ispisuje krajnji rezultat u konzolu.
 
