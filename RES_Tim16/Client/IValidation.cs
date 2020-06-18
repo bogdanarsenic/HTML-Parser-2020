@@ -10,5 +10,6 @@ namespace Client
     {
         bool CheckIfStringEmpty(string str);
         bool CheckIfPathCorrect(string path);
+        bool ValidFileName(string name);
     }
 }

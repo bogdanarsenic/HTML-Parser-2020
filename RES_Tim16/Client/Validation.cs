@@ -37,5 +37,28 @@ namespace Client
                 return false;
             }
         }
+
+        public bool ValidFileName(string name)
+        {
+            if(!name.Contains(".")||name.Split('.').Length!=2)
+            {
+                Console.WriteLine("Invalid file name. You need to put one dot.");
+                return false;
+            }
+            string fileName = name.Split('.')[0];
+            string extension= name.Split('.')[1];
+            if(extension!="txt")
+            {
+                Console.WriteLine("Invalid extension!");
+                return false; 
+            }
+            if (fileName.Contains("< ")||fileName.Contains(">")||fileName.Contains(":")|| fileName.Contains("/")||fileName.Contains("|") || fileName.Contains("?") || fileName.Contains("*"))
+            {
+                Console.WriteLine("Invalid file name. You have forbidden character in file name!");
+                return false;
+            }
+
+            return true;
+        }
     }
 }

@@ -43,7 +43,7 @@ namespace Client
                                 Console.WriteLine("Insert file name:");
                                 string nameFile = Console.ReadLine();
 
-                                if (validate.CheckIfPathCorrect(nameFile) && !validate.CheckIfStringEmpty(nameFile))
+                                if (validate.ValidFileName(nameFile) && validate.CheckIfPathCorrect(nameFile) && !validate.CheckIfStringEmpty(nameFile))
                                 {
                                     IFileParser p1 = new FileParser();
                                     p1.OpenExistingFileForParsing(nameFile);
@@ -74,6 +74,12 @@ namespace Client
                                         Console.WriteLine("Choose another name!");
                                         break;
                                 }
+
+                                if(!validate.ValidFileName(nameFile2))
+                                 {
+
+                                    break;
+                                 }
 
                                 Console.WriteLine("Write file content:");
                                 string fileContent = Console.ReadLine();
