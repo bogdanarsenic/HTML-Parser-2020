@@ -25,6 +25,7 @@ namespace Parser
 
         public void OpenExistingFileForParsing(string name)
         {
+            List<string> list2 = new List<string>();
             bool checkIfOk = false;
             string pathforParser = @"C:\Users\Bogdan\Tim16\" + name;
             string textForParsing = File.ReadAllText(pathforParser);

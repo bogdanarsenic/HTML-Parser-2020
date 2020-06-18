@@ -54,12 +54,17 @@ namespace Client
                                         VirtualUI.VirtualUI virtualUI1 = new VirtualUI.VirtualUI(uIController1);
                                         virtualUI1.ParseInformationFromController();
                                         UIClass ui = new UIClass(uIController1);
+                                        if(ui.LineNumbers!=null)
+                                        {                             
+                                                AddColor add = new AddColor(ui.LineNumbers, uIController1);
+                                        }
                                     }
                                 }
                                 input = false;
                                 Console.ReadLine();
 
-                                break;
+
+                        break;
                     case "2":
                                 Console.WriteLine("Write file name:");
                                 string nameFile2 = Console.ReadLine();
@@ -92,8 +97,12 @@ namespace Client
                                     VirtualUI.VirtualUI virtualUI2 = new VirtualUI.VirtualUI(uIController2);
                                     virtualUI2.ParseInformationFromController();
                                     UIClass ui = new UIClass(uIController2);
+                                    if (ui.LineNumbers != null)
+                                    {
+                                        AddColor add = new AddColor(ui.LineNumbers, uIController2);
+                                    }
 
-                                }
+                                 }
 
                                 input = false;
                                 break;

@@ -11,9 +11,16 @@ namespace UI
     {
 
         public IController controller;
+        public int[] LineNumbers { get; set; }
 
         public UIClass(IController controller)
         {
+            if(controller==null)
+            {
+                this.controller = controller ?? throw new ArgumentNullException("IController while making UI Class can't be null");
+
+            }
+
             if (controller.DatabaseContent==null || controller.DeltaContent==null || controller.LineRange==null)
             {
                 Console.WriteLine("This is a content: ");
@@ -23,14 +30,23 @@ namespace UI
             else
             {
                 this.controller = controller;
-                int[] linenumbers = GetLineRange(this.controller.LineRange);
-
-                AddColor ac = new AddColor(linenumbers, this.controller);
+                int[] linenumbers = GetLineRange(controller.LineRange);
+                this.LineNumbers = linenumbers;
             }
         }
 
         public int[] GetLineRange(string lines)
         {
+            if(lines==null)
+            {
+                throw new ArgumentNullException("Can't be null");
+            }
+
+            if(!lines.Contains(","))
+            {
+                throw new ArgumentException("Lines needs to have at least one , ");
+            }
+
             int i = lines.Split(',').Length - 1;
 
             int[] linenumbers = new int[i];

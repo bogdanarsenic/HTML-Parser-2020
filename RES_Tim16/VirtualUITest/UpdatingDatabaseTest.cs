@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UIController;
 using VirtualUI;
 using VirtualUI.Controller;
 using VirtualUI.Models;
@@ -16,6 +17,38 @@ namespace VirtualUITest
     {
         private FileContent fileContent;
         private Files file;
+        private IFileContentController fileContentController;
+        private IFileController fileController;
+        private IController controller;
+        private IUpdatingDatabase updatingDatabase;
+
+
+        [Test]
+        public void UpdatingDatabaseGood()
+        {
+            Mock<FileContent> fileContentDouble = new Mock<FileContent>();
+            fileContent = fileContentDouble.Object;
+
+            Mock<IFileContentController> fileContentContrellerDouble = new Mock<IFileContentController>();
+            fileContentController = fileContentContrellerDouble.Object;
+
+            Mock<Files> fileDouble = new Mock<Files>();
+            fileDouble.Setup(fileproba => fileproba.Id).Returns("nestoBezveze");
+            file = fileDouble.Object;
+
+            Mock<IFileController> fileContrellerDouble = new Mock<IFileController>();
+            fileContrellerDouble.Setup(controller => controller.Add(file)).Verifiable();
+
+
+            Mock<IController> controllerDouble = new Mock<IController>();
+            controller = controllerDouble.Object;
+
+            UpdatingDatabase UpdateDouble =new  UpdatingDatabase();
+            UpdateDouble.AddToDatabase(file, fileContent, fileContrellerDouble.Object,fileContentController);
+
+            fileContrellerDouble.Verify(controller => controller.Add(file), Times.Once);
+
+        }
 
         [Test]
         [TestCase("NekiFajl")]

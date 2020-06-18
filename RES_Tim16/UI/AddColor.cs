@@ -9,8 +9,24 @@ namespace UI
 {
     public class AddColor
     {
+        public IController controller;
+
         public AddColor(int[] lines, IController controller)
         {
+            if(controller==null)
+            {
+                this.controller = controller ?? throw new ArgumentNullException("IController while making UI Class can't be null");
+            }
+
+            if (lines == null)
+            {
+                throw new ArgumentNullException("IController while making UI Class can't be null");
+            }
+
+            if (!controller.DeltaContent.Contains("\n")|| !controller.DatabaseContent.Contains("\r\n") || !controller.Content.Contains("\r\n"))
+            {
+                throw new ArgumentException("Must have character for new line");
+            }
 
             string[] delta = controller.DeltaContent.Split(new string[] { "\n" }, StringSplitOptions.None);
             string[] previous = controller.DatabaseContent.Split(new string[] { "\r\n" }, StringSplitOptions.None);
