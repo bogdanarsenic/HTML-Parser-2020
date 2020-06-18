@@ -50,18 +50,18 @@ namespace Tests
             string badpath6 = "nesto.nesto";
             string badpath7 = "/";
             string badpath8 = "<";
-
-
+            string badpath9 = ":";
 
             Validation v = new Validation();
-            Assert.AreEqual(true, v.CheckIfPathCorrect(goodpath));
-            Assert.AreEqual(false, v.CheckIfPathCorrect(badpath));
-            Assert.AreEqual(false, v.CheckIfPathCorrect(badpath3));
-            Assert.AreEqual(false, v.CheckIfPathCorrect(badpath4));
-            Assert.AreEqual(false, v.CheckIfPathCorrect(badpath5));
-            Assert.AreEqual(false, v.CheckIfPathCorrect(badpath6));
-            Assert.AreEqual(false, v.CheckIfPathCorrect(badpath7));
-            Assert.AreEqual(false, v.CheckIfPathCorrect(badpath8));
+            Assert.AreEqual(true, v.ValidFileName(goodpath));
+            Assert.AreEqual(false, v.ValidFileName(badpath));
+            Assert.AreEqual(false, v.ValidFileName(badpath3));
+            Assert.AreEqual(false, v.ValidFileName(badpath4));
+            Assert.AreEqual(false, v.ValidFileName(badpath5));
+            Assert.AreEqual(false, v.ValidFileName(badpath6));
+            Assert.AreEqual(false, v.ValidFileName(badpath7));
+            Assert.AreEqual(false, v.ValidFileName(badpath8));
+            Assert.AreEqual(false, v.ValidFileName(badpath9));
         }
 
     }
