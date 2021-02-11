@@ -18,17 +18,21 @@ namespace Parser
             IParser p = new Parser();
             list = p.SplitHtmlText(content);
 
-            string pathforParser = @"C:\Users\Bogdan\Tim16\" + name;
+			//string pathforParser = @"C:\Users\Bogdan\Tim16\" + name;
 
-            File.AppendAllLines(pathforParser, list);
+			string solutionPath = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
+			string pathforParser = solutionPath.Replace("RES_Tim16\\Client",name);
+			File.AppendAllLines(pathforParser, list);
         }
 
         public void OpenExistingFileForParsing(string name)
         {
             List<string> list2 = new List<string>();
             bool checkIfOk = false;
-            string pathforParser = @"C:\Users\Bogdan\Tim16\" + name;
-            string textForParsing = File.ReadAllText(pathforParser);
+			// string pathforParser = @"C:\Users\Bogdan\Tim16\" + name;
+			string solutionPath = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
+			string pathforParser = solutionPath.Replace("RES_Tim16\\Client", name);
+			string textForParsing = File.ReadAllText(pathforParser);
 
             if (textForParsing.EndsWith("\n"))
             {

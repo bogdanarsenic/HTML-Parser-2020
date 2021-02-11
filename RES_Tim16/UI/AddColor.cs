@@ -43,9 +43,12 @@ namespace UI
             }
 
             Console.WriteLine("Comparing old and new file...");
-            Console.WriteLine("New file content is: ");
 
-            AddDifference(previous, newContents, delta, numLines, lines);
+			Console.WriteLine("-------------------------------");
+			Console.WriteLine("New file content is: ");
+			Console.WriteLine("-------------------------------");
+
+			AddDifference(previous, newContents, delta, numLines, lines);
         }
 
         public void AddDifference(string[] databaseText, string[] newText, string[] delta, int numberOfLines, int[] lines)

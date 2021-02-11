@@ -52,9 +52,12 @@ namespace VirtualUI
                 }
                 else
                 {
-                    Console.WriteLine("No changes! File contents are completely the same");
-                }
-            }
+					Console.WriteLine("-------------------------------");
+					Console.WriteLine("No changes! File contents are completely the same");
+					Console.WriteLine("-------------------------------");
+
+				}
+			}
             else
             {
                 Console.WriteLine("File doesn't Exists in database. Now we are going to add it");

@@ -13,7 +13,8 @@ namespace Parser
         {
            
                 int i = 1;
-                Console.WriteLine("Allowed html tags: ");
+				Console.WriteLine("-------------------");
+				Console.WriteLine("Allowed html tags: ");
                 foreach (string s in htmlTags)
                 {
                     if (i % 2 == 0)

@@ -24,9 +24,11 @@ namespace Client
 
         public bool CheckIfPathCorrect(string path)
         {
-            path = @"C:\Users\Bogdan\Tim16\" + path;
 
-            if (File.Exists(path))
+			string pathTo = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
+			path=pathTo.Replace("RES_Tim16\\Client", path);
+
+			if (File.Exists(path))
             {
                 Console.WriteLine("File exists!");
                 return true;
