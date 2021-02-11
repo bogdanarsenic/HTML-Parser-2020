@@ -4,7 +4,7 @@ In this project we had a task to make and test (unit testing) application which 
 The project followed agile principles, SOLID principles and also used some patterns. First we had to make user stories, than divide tasks between two us, and after that implement them. The sprint was every week, so on Fridays we will have meetings to present everything that we have made that week. 
 If the input (file or content) is correctly written in HTML (for example < p > some content < / p >), than we will save that content in file and in our database. Next time when we access that file, we can change something, and if we do that it should appear on our terminal the difference between the last modification and the new content (similar to commits on github - red colour will signalize that we removed that line, green that we added that line).
 <hr>
-<a href="ftn.res2020.mihailo_vasiljevic.virtual-ui.zad4.pdf"> Project text </a>
+<a href="ftn.res2020.mihailo_vasiljevic.virtual-ui.zad4.pdf"> Project text </a> <br/>
 <a href="https://dejanbozic94.visualstudio.com/RES%202020"> Agile development </a>
 
 # Tim16
