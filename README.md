@@ -1,8 +1,8 @@
 <h3> Project description </h3>
 <hr>
-In this project we had a task to make and test (unit testing) application which would check if the written content is correct in HTML. For examples if the tag < p > is inside the tag < head > that's not correct html file. Since HTML parser gets pretty complicated because many variations could be made, the text of a project let us simplify it a little bit. 
+In this project we had a task to make and test (unit testing) application which would check if the written content is correct in HTML. For examples if the tag < p > is inside the tag < head > that's not correct html file. Since HTML parser gets pretty complicated because many variations could be made, the text of a project let us simplify it a little bit. So when the user starts writing html content, it needs to start with < html >< head >< title >put something </ title ></ head > and to finish with </ html > otherwise the content would be invalid. The reason for that is because the main subject of this project is agile development and unit testing, so as I said, parser was bit simplified because of that. 
 The project followed agile principles, SOLID principles and also used some patterns. First we had to make user stories, than divide tasks between two us, and after that implement them. The sprint was every week, so on Fridays we will have meetings to present everything that we have made that week. 
-If the input (file or content) is correctly written in HTML (for example < p > some content < / p >), than we will save that content in file and in our database. Next time when we access that file, we can change something, and if we do that it should appear on our terminal the difference between the last modification and the new content (similar to commits on github - red colour will signalize that we removed that line, green that we added that line).
+If the input (file or content) is correctly written in HTML, than we will save that content in file and in our database. Next time when we open that file and change something, and we choose number 1 (to input that txt file name) it should appear on our terminal the difference between the last modification and the new content (similar to commits on github - red colour will signalize that we removed that line, green that we added that line).
 <hr>
 <a href="ftn.res2020.mihailo_vasiljevic.virtual-ui.zad4.pdf"> Project text </a> <br/>
 <a href="https://dejanbozic94.visualstudio.com/RES%202020"> Agile development </a>
@@ -12,8 +12,9 @@ If the input (file or content) is correctly written in HTML (for example < p > s
 
 Once we open project in Visual Studio, we need to go to:
 <ol>
-<li> Package manager console and to choose DefaultProject -> VirtualUI </li>
+<li> Package manager console and choose DefaultProject -> VirtualUI </li>
 <li> Write in terminal "update-database", so we could get in SQL ServerExplorer our database by the name of "FileDatabase"</li>
+<li> Right click to "Client" console application -> Debug -> Start New Instance </li>
 </ol>
 
 # Tim16
