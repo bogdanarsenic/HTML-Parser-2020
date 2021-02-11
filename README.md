@@ -7,6 +7,15 @@ If the input (file or content) is correctly written in HTML (for example < p > s
 <a href="ftn.res2020.mihailo_vasiljevic.virtual-ui.zad4.pdf"> Project text </a> <br/>
 <a href="https://dejanbozic94.visualstudio.com/RES%202020"> Agile development </a>
 
+
+<h3> How to start a project </h3>
+
+First we need to update the database. Once we open project in Visual Studio, we need to go to:
+<ol>
+<li> Package manager console and to choose DefaultProject -> VirtualUI </li>
+<li> Write in terminal "update-database", so we could get in SQL ServerExplorer our database by the name of "FileDatabase"</li>
+</ol>
+
 # Tim16
 
 1. Arhitektura i Dizajn
